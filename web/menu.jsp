@@ -9,8 +9,122 @@
 <html>
 <head>
     <title>Title</title>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
+<div class="container">
+    <h3>菜单</h3>
+    <a class="btn btn-primary btn-block dropdown-toggle" href="${pageContext.request.contextPath}#"
+       target=mainFrame>－ 首页</a>
+    <div>
+        <a class="btn btn-primary btn-block nav nav-header collapsed" data-toggle="collapse"
+           data-target="#0"
+           target=main>－ 商品与赠品管理
+            <span class="caret"></span>
+        </a>
+        <ul id="0" class="nav nav-list collapse">
+            <li>
+                <a href="${pageContext.request.contextPath}#"
+                   target=mainFrame>－ 商品管理</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}#"
+                   target=mainFrame>－ 商品品牌管理</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}#"
+                   target=mainFrame>－ 商品类型管理</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}#"
+                   target=mainFrame>－ 赠品管理</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}#"
+                   target=mainFrame>－ 促销活动申请与审批</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}#"
+                   target=mainFrame>－ 价格调整申请与审批</a>
+            </li>
+        </ul>
 
+        <a class="btn btn-primary btn-block nav nav-header collapsed" data-toggle="collapse"
+           data-target="#1"
+           target=main>－ B2C销售管理
+            <span class="caret"></span>
+        </a>
+        <ul id="1" class="nav nav-list collapse">
+            <li>
+                <a href="${pageContext.request.contextPath}#"
+                   target=mainFrame>－ 订单显示</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}#"
+                   target=mainFrame>－ 销售出库单</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}#"
+                   target=mainFrame>－ 销售退货单</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}#"
+                   target=mainFrame>－ 网店订单导入</a>
+            </li>
+        </ul>
+
+        <a class="btn btn-primary btn-block nav nav-header collapsed" data-toggle="collapse"
+           data-target="#2"
+           target=main>－ 售后管理
+            <span class="caret"></span>
+        </a>
+        <ul id="2" class="nav nav-list collapse">
+            <li>
+                <a href="${pageContext.request.contextPath}#"
+                   target=mainFrame>－ 返厂入库管理</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}#"
+                   target=mainFrame>－ 返厂出库管理</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}#"
+                   target=mainFrame>－ 退货申请管理</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}#"
+                   target=mainFrame>－ 退货申诉记录管理</a>
+            </li>
+        </ul>
+
+        <a class="btn btn-primary btn-block nav nav-header collapsed" data-toggle="collapse"
+           data-target="#3"
+           target=main>－ 系统管理
+            <span class="caret"></span>
+        </a>
+        <ul id="3" class="nav nav-list collapse">
+            <li>
+                <a href="${pageContext.request.contextPath}#"
+                   target=mainFrame>－ 用户管理</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}#"
+                   target=mainFrame>－ 角色管理</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}#"
+                   target=mainFrame>－ 权限管理</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}#"
+                   target=mainFrame>－ 日志管理</a>
+            </li>
+        </ul>
+    </div>
+</div>
 </body>
 </html>
