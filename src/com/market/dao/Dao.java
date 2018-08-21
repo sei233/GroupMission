@@ -121,6 +121,7 @@ public class Dao<T> {
     public ArrayList<T> loadAllObjects(Class<T> cls,String sql,Object... objects){
         Connection connection = getConnection();
         try {
+
             PreparedStatement smt = connection.prepareStatement(sql);
             if (objects != null && objects.length > 0) {
                 for (int i = 0; i < objects.length; i++) {
