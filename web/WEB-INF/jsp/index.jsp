@@ -49,10 +49,6 @@
                 }
             });
         });
-
-        function del() {
-            return window.confirm("您确定删除吗?");
-        }
     </script>
 
 </head>
@@ -67,36 +63,38 @@
 
     <table id="table" border="1" class="table table-striped table-bordered table-hover">
         <tr>
-            <th>游戏名</th>
-            <th>标题</th>
-            <th>下载量</th>
-            <th>大小</th>
-            <th>状态</th>
-            <th>分类</th>
-            <th>平台类型</th>
-            <th>推荐类型</th>
-            <th>最近更新</th>
+            <th>序号</th>
+            <th></th>
+            <th>返厂入库单号</th>
+            <th>返厂入库标志</th>
+            <th>制单人</th>
+            <th>制单时间</th>
+            <th>审批人</th>
+            <th>审批状态</th>
+            <th>操作</th>
             <th>操作</th>
             <th>操作</th>
         </tr>
-        <c:forEach items="${gamesList}" var="game" varStatus="s">
+        <c:forEach items="${apps}" var="app" varStatus="s">
             <tr class="active">
-                <td>${game.game.gameName}</td>
-                <td>${game.game.gameTitle}</td>
-                <td>${game.game.gameDownload}</td>
-                <td>${game.game.gameSize}</td>
-                <td>${game.gameStatus}</td>
-                <td>${game.gameType}</td>
-                <td>${game.gameOperation}</td>
-                <td>${game.gameAdviseType}</td>
-                <td>${game.gameUpdateDate}</td>
-                <td><a class="btn btn-primary" href="${pageContext.request.contextPath }/application?type=update&&id=${game.game.gameId}">修改</a></td>
-                <td><a class="btn btn-danger" onclick="return del()"
-                       href="${pageContext.request.contextPath }/application?type=delete&&id=${game.game.gameId}">删除</a></td>
+                <td>${app.appID}</td>
+                <td><input type="checkbox"></td>
+                <td>${app.antiOutID}</td>
+                <td>${app.antiOutSign}</td>
+                <td>${app.docuMaker}</td>
+                <td>${app.docuTime}</td>
+                <td>${app.approver}</td>
+                <td>${app.approvalState}</td>
+                <td><a class="btn btn-primary"
+                       href="${pageContext.request.contextPath }/application?type=look&&id=${app.appID}">查看</a></td>
+                <td><a class="btn btn-danger"
+                       href="${pageContext.request.contextPath }/application?type=update&&id=${app.appID}">修改</a></td>
+                <td><a class="btn btn-danger"
+                       href="${pageContext.request.contextPath }/application?type=follow&&id=${app.appID}">审核跟踪</a></td>
             </tr>
         </c:forEach>
         <tr>
-            <td colspan="10">
+            <td colspan="11">
                 <!--必须要的div-->
                 <div class="pageTest"></div>
             </td>

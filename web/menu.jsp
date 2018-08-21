@@ -85,11 +85,11 @@
         <ul id="2" class="nav nav-list collapse">
             <li>
                 <a href="${pageContext.request.contextPath}/application"
-                   target=mainFrame>－ 返厂入库管理</a>
+                   target=mainFrame>－ 返厂出库管理</a>
             </li>
             <li>
                 <a href="${pageContext.request.contextPath}#"
-                   target=mainFrame>－ 返厂出库管理</a>
+                   target=mainFrame>－ 返厂入库管理</a>
             </li>
             <li>
                 <a href="${pageContext.request.contextPath}#"

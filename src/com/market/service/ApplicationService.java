@@ -3,12 +3,17 @@ package com.market.service;
 import com.market.bean.Application;
 import com.market.dao.Dao;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ApplicationService {
-    public static void main(String[] args){
+    public List<Application>  findAll(){
         Dao<Application> dao = new Dao<>();
-        ArrayList<Application> list = dao.loadAllObjects(Application.class, "select * from orders");
-        System.out.println(list);
+        return dao.loadAllObjects(Application.class, "select * from application");
+    }
+
+    public List<Application>  selectByPage(Integer page, Integer size){
+        Integer index = (page-1)*size;
+        Dao<Application> dao = new Dao<>();
+        return dao.loadAllObjects(Application.class, "select * from application limit ?,?",index,size);
     }
 }
