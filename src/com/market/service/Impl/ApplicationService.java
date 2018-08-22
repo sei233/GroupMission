@@ -6,7 +6,7 @@ import com.market.dao.Dao;
 import java.util.List;
 
 public class ApplicationService {
-    Dao<Application> dao = new Dao<>();
+    private Dao<Application> dao = new Dao<>();
 
     public List<Application>  findAll(){
         return dao.loadAllObjects(Application.class, "select * from application");

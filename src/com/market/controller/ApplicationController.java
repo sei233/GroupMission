@@ -30,10 +30,26 @@ public class ApplicationController extends HttpServlet {
         if("add".equals(type)){
 
         }
-        if("query".equals(type)){
+        else if("query".equals(type)){
+            String appID = req.getParameter("appID");
+            System.out.print("返厂出库单号"+appID);
 
+            String outSign = req.getParameter("outSign");
+            System.out.print("返厂出库标志"+outSign);
+
+            String approvalState = req.getParameter("approvalState");
+            System.out.print("审核状态"+approvalState);
+
+            String docuMaker = req.getParameter("docuMaker");
+            System.out.print("制单人"+docuMaker);
+
+            String docuTime = req.getParameter("docuTime");
+            System.out.print("制单时间"+docuTime);
+
+            String approvalTime = req.getParameter("approvalTime");
+            System.out.print("审批时间"+approvalTime);
         }
-        if("delete".equals(type)){
+        else if("delete".equals(type)){
             String id = req.getParameter("id");
             applicationService.deleteById(Integer.parseInt(id));
         }
