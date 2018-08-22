@@ -11,8 +11,22 @@
         <servlet-name>Application</servlet-name>
         <url-pattern>/app_out</url-pattern>
     </servlet-mapping>
-
-
+    <servlet>
+        <servlet-name>Good</servlet-name>
+        <servlet-class>com.market.controller.GoodController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Good</servlet-name>
+        <url-pattern>/good_out</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Brand</servlet-name>
+        <servlet-class>com.market.controller.BrandController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Brand</servlet-name>
+        <url-pattern>/brand_out</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>

@@ -9,10 +9,8 @@
 <html>
 <head>
     <title>Title</title>
-
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
@@ -28,28 +26,40 @@
         </a>
         <ul id="0" class="nav nav-list collapse">
             <li>
-                <a href="${pageContext.request.contextPath}#"
+                <a href="${pageContext.request.contextPath}/product_out"
+                   target=mainFrame>－ 产品展示</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}/good_out"
                    target=mainFrame>－ 商品管理</a>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}#"
+                <a href="${pageContext.request.contextPath}/brand_out"
                    target=mainFrame>－ 商品品牌管理</a>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}#"
+                <a href="${pageContext.request.contextPath}/type_out"
                    target=mainFrame>－ 商品类型管理</a>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}#"
+                <a href="${pageContext.request.contextPath}/gift_out"
                    target=mainFrame>－ 赠品管理</a>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}#"
-                   target=mainFrame>－ 促销活动申请与审批</a>
+                <a href="${pageContext.request.contextPath}/activityAPC_out"
+                   target=mainFrame>－ 促销活动申请</a>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}#"
-                   target=mainFrame>－ 价格调整申请与审批</a>
+                <a href="${pageContext.request.contextPath}/activityAPV_out"
+                   target=mainFrame>－ 促销活动审批</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}/priceAPC_out"
+                   target=mainFrame>－ 价格调整申请</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}/prictAPV_out"
+                   target=mainFrame>－ 价格调整审批</a>
             </li>
         </ul>
 
