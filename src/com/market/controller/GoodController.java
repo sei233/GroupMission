@@ -13,7 +13,6 @@ public class GoodController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
 
         String type = request.getParameter("type");
-
         switch (type){
             //添加一类商品
             case "add1":{
@@ -31,7 +30,7 @@ public class GoodController extends HttpServlet {
                 break;
             }
             //修改选中商品
-            case "change":{
+            case "update":{
                 //跳转到修改商品页
                 break;
             }
@@ -51,9 +50,9 @@ public class GoodController extends HttpServlet {
                 break;
             }
             //错误操作，返回原页
-            default:break;
+            default:
+                break;
         }
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
