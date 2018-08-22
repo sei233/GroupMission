@@ -31,4 +31,22 @@ public class SqlSmt {
     public static final String DELETE_GIFT="delete gift where giftId=?";
     public static final String FINDID_GIFT="select * from gift where giftId=?";
     public static final String FINDALL_GIFT="select * from gift where 1=1";
+    //user增删改查语句
+    public static final String INSERT_USER="insert into user(userAccount,userName,userDept,userPassword,userSex,userStatus,userTitle,userPhone,userEmail,userRemark1,userRemark2,userRemark3,userRemark4,userRemark5,userRole) values(?,?,?,?,0,0,?,?,?,?,?,?,?,?,?)";
+    public static final String UPDATE_USER="update user set userAccount=?,userName=?,userDept=?,userPassword=?,userTitle=?,userPhone=?,userEmail=?,userRemark1=?,userRemark2=?,userRemark3=?,userRemark4=?,userRemark5=?,userRole=? where userId=?";
+    public static final String DELETE_USER="delete user where userId=?";
+    public static final String FINDID_USER="select * from user where userId=?";
+    public static final String FINDALL_USER="select * from user where 1=1";
+    //role增删改查语句
+    public static final String INSERT_ROLE="insert into role(roleName,roleDesc,roleStatus,roleDept)values(?,?,0,?)";
+    public static final String UPDATE_ROLE="update role set roleName=?,roleDesc=?,roleDept=? where roleId=?";
+    public static final String DELETE_ROLE="delete role where roleId=?";
+    public static final String FINDID_ROLE="select * from role where roleId=?";
+    public static final String FINDALL_ROLE="select * from role where 1=1";
+    //permission增删改查语句
+    public static final String INSERT_PERMISSION="insert into permission(permissionName,permissionDesc,permissionOps) values(?,?,?)";
+    public static final String UPDATE_PERMISSION="update permission set permissionName=?,permissionDesc=?,permissionOps=? where permissionId=?";
+    public static final String DELETE_PERMISSION="delete permission where permissionId=?";
+    public static final String FINDID_PERMISSION="select * from permission where permissionId=?";
+    public static final String FINDALL_PERMISSION="select * from permission where 1=1";
 }
