@@ -35,9 +35,15 @@
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <%--<script src="/js/jquery.min.js"></script>--%>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap-datetimepicker.fr.js"></script>
     <script type="text/javascript" src="/js/page.js"></script>
+
+
     <link rel="stylesheet" href="/css/page.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css">
 
     <script type="text/javascript">
         $(function () {
@@ -47,6 +53,38 @@
                 clickBack: function (page) {
                     window.location.reload();
                 }
+            });
+
+            $('.form_datetime').datetimepicker({
+                //language:  'fr',
+                weekStart: 1,
+                todayBtn: 1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                forceParse: 0,
+                showMeridian: 1
+            });
+            $('.form_date').datetimepicker({
+                language: 'fr',
+                weekStart: 1,
+                todayBtn: 1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 2,
+                forceParse: 0
+            });
+            $('.form_time').datetimepicker({
+                language: 'fr',
+                weekStart: 1,
+                todayBtn: 1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 1,
+                minView: 0,
+                maxView: 1,
+                forceParse: 0
             });
         });
     </script>
@@ -58,43 +96,96 @@
     <form action="${pageContext.request.contextPath}/app_out?type=query" method="post" class="form-inline">
         <div>
             <div class="form-group">
-                <input type="text" name="condition" class="form-control" placeholder="返厂出库单号">
+                <label>返厂出库单号:</label>
+                <input type="text" name="appID" class="form-control" placeholder="返厂出库单号">
             </div>
 
             <div class="form-group">
-                <input type="text" name="condition" class="form-control" placeholder="返厂出库标志">
+                <label>返厂出库标志:</label>
+                <select class="btn btn-default" name="outSign">
+                    <option value="">请选择</option>
+                    <option value="0">未出库</option>
+                    <option value="1">已出库</option>
+                </select>
             </div>
 
             <div class="form-group">
-                <input type="text" name="condition" class="form-control" placeholder="审核状态">
+                <label>审核状态:</label>
+                <select class="btn btn-default" name="approvalState">
+                    <option value="">请选择</option>
+                    <option value="0">不通过</option>
+                    <option value="1">审批通过</option>
+                    <option value="2">未审批</option>
+                </select>
             </div>
 
             <div class="form-group">
-                <input type="text" name="condition" class="form-control" placeholder="制单人">
+                <label>制单人:</label>
+                <input type="text" name="docuMaker" class="form-control" placeholder="制单人">
             </div>
-
-
-            <a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/app_out?type=add">添加</a>
-            <a class="btn btn-warning box_relative"
-               href="${pageContext.request.contextPath }/app_out?type=export">导出</a>
         </div>
-
+        <br>
         <div>
             <div class="form-group">
-                <input type="text" name="condition" class="form-control" placeholder="制单时间">
+                <label for="dtp_input1">制单时间:</label>
+                <div class="input-group date form_datetime" data-date="1979-09-16T05:25:07Z"
+                     data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                    <input class="form-control" size="30" type="text" value="" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+                <input type="hidden" id="dtp_input1" value=""/><br/>
             </div>
 
             <div class="form-group">
-                <input type="text" name="condition" class="form-control" placeholder="审批时间">
+                <label for="dtp_input2">至</label>
+                <div class="input-group date form_datetime" data-date="1979-09-16T05:25:07Z"
+                     data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input2">
+                    <input class="form-control" size="30" type="text" value="" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+                <input type="hidden" id="dtp_input2" value=""/><br/>
+            </div>
+        </div>
+        <br>
+        <div>
+            <div class="form-group">
+                <label for="dtp_input3">审批时间:</label>
+                <div class="input-group date form_datetime" data-date="2018-08-01T01:00:00Z"
+                     data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input3">
+                    <input class="form-control" size="30" type="text" value="" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+                <input type="hidden" name="approvalTime" id="dtp_input3" value=""/><br/>
             </div>
 
-            <input type="submit" class="btn btn-info" value="查询">
-            <a class="btn btn-warning box_relative"
-               href="${pageContext.request.contextPath }/app_out?type=delete">删除</a>
+            <div class="form-group">
+                <label for="dtp_input4">至</label>
+                <div class="input-group date form_datetime" data-date="2018-08-01T01:00:00Z"
+                     data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input4">
+                    <input class="form-control" size="30" type="text" value="" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+                <input type="hidden" name="approvalTime" id="dtp_input4" value=""/><br/>
+            </div>
+        </div>
+        <br>
+        <div>
+            <div class="form-group">
+                <a class="btn btn-info box_relative" href="${pageContext.request.contextPath }/app_out?type=add">添加</a>
+                <a class="btn btn-info box_relative"
+                   href="${pageContext.request.contextPath }/app_out?type=export">导出</a>
+                <input type="submit" class="btn btn-info" value="查询">
+                <a class="btn btn-danger box_relative"
+                   href="${pageContext.request.contextPath }/app_out?type=delete">删除</a>
+            </div>
         </div>
 
-        <br>
-        <br>
+        <hr>
+
         <div class="form-group">
             <table id="table" border="1" class="table table-striped table-bordered table-hover">
                 <tr>
