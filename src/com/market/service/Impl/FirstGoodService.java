@@ -1,11 +1,12 @@
-package com.market.service;
+package com.market.service.Impl;
 
-import com.market.bean.FirstGood;
+import com.market.bean.po.FirstGood;
 import com.market.dao.Dao;
+import com.market.service.BasicOperate;
 
 import java.util.List;
 
-public class FirstGoodService implements BasicOperate{
+public class FirstGoodService implements BasicOperate {
 //    FirstGood fg = new FirstGood();
     Dao<FirstGood> d = new Dao<FirstGood>();
     @Override

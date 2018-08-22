@@ -1,6 +1,6 @@
-package com.market.bean;
+package com.market.bean.po;
 
-public class SecondGood {
+public class FirstGood {
     private Integer goodId;
     private String goodName;
     private Float adoptPrice;
@@ -11,17 +11,14 @@ public class SecondGood {
     private String creatTime;
     private String updateTime;
     private String operator;
-    private Integer typeId;
-    private Integer brandId;
-    private String goodModel;
-    private String goodColor;
-    private String brandName;
+    private int typeId;
+    private int productId;
+    private Product product;
     private String typeName;
-
-    public SecondGood() {
+    public FirstGood() {
     }
 
-    public SecondGood(Integer goodId, String goodName, Float adoptPrice, Float marketPrice, Float shopPrice, Integer minNo, Integer adopt, String creatTime, String updateTime, String operator, Integer typeId, Integer brandId, String goodModel, String goodColor, String brandName, String typeName) {
+    public FirstGood(Integer goodId, String goodName, Float adoptPrice, Float marketPrice, Float shopPrice, Integer minNo, Integer adopt, String creatTime, String updateTime, String operator, int typeId, int productId, Product product, String typeName) {
         this.goodId = goodId;
         this.goodName = goodName;
         this.adoptPrice = adoptPrice;
@@ -33,19 +30,9 @@ public class SecondGood {
         this.updateTime = updateTime;
         this.operator = operator;
         this.typeId = typeId;
-        this.brandId = brandId;
-        this.goodModel = goodModel;
-        this.goodColor = goodColor;
-        this.brandName = brandName;
+        this.productId = productId;
+        this.product = product;
         this.typeName = typeName;
-    }
-
-    public String getBrandName() {
-        return brandName;
-    }
-
-    public void setBrandName(String brandName) {
-        this.brandName = brandName;
     }
 
     public String getTypeName() {
@@ -54,6 +41,14 @@ public class SecondGood {
 
     public void setTypeName(String typeName) {
         this.typeName = typeName;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
 
@@ -140,35 +135,22 @@ public class SecondGood {
         this.operator = operator;
     }
 
-    public Integer getTypeId() {
+    public int getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Integer typeId) {
+    public void setTypeId(int typeId) {
         this.typeId = typeId;
     }
 
-    public Integer getBrandId() {
-        return brandId;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setBrandId(Integer brandId) {
-        this.brandId = brandId;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
+    //    private List<String> list;//加载的是type表类型状态0的list（name）
 
-    public String getGoodModel() {
-        return goodModel;
-    }
 
-    public void setGoodModel(String goodModel) {
-        this.goodModel = goodModel;
-    }
-
-    public String getGoodColor() {
-        return goodColor;
-    }
-
-    public void setGoodColor(String goodColor) {
-        this.goodColor = goodColor;
-    }
 }

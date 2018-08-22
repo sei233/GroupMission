@@ -1,4 +1,4 @@
-package com.market.service;
+package com.market.service.Impl;
 
 public class SqlSmt {
     //firstGood增删改查语句

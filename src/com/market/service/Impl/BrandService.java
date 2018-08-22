@@ -1,7 +1,8 @@
-package com.market.service;
+package com.market.service.Impl;
 
-import com.market.bean.Brand;
+import com.market.bean.po.Brand;
 import com.market.dao.Dao;
+import com.market.service.BasicOperate;
 
 import java.util.List;
 

@@ -2,7 +2,7 @@ package com.market.controller;
 
 import com.market.bean.po.Application;
 import com.market.bean.vo.ApplicationVo;
-import com.market.service.ApplicationService;
+import com.market.service.Impl.ApplicationService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

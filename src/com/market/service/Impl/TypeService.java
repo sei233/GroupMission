@@ -1,11 +1,12 @@
-package com.market.service;
+package com.market.service.Impl;
 
-import com.market.bean.type;
+import com.market.bean.po.type;
 import com.market.dao.Dao;
+import com.market.service.BasicOperate;
 
 import java.util.List;
 
-public class TypeService  implements BasicOperate{
+public class TypeService  implements BasicOperate {
     Dao<type> d = new Dao<type>();
     @Override
     public int addObj(Object... objects) {
