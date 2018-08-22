@@ -1,4 +1,4 @@
-package com.market.bean;
+package com.market.bean.po;
 
 import java.util.Date;
 

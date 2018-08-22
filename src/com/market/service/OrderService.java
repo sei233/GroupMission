@@ -1,6 +1,6 @@
 package com.market.service;
 
-import com.market.bean.Order;
+import com.market.bean.po.Order;
 import com.market.dao.Dao;
 
 import java.util.ArrayList;

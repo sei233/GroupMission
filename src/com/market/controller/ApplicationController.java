@@ -1,6 +1,7 @@
 package com.market.controller;
 
-import com.market.bean.Application;
+import com.market.bean.po.Application;
+import com.market.bean.vo.ApplicationVo;
 import com.market.service.ApplicationService;
 
 import javax.servlet.RequestDispatcher;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -20,6 +23,7 @@ public class ApplicationController extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ApplicationService applicationService = new ApplicationService();
         String type = req.getParameter("type");
         String page = req.getParameter("page");
 
@@ -30,7 +34,8 @@ public class ApplicationController extends HttpServlet {
 
         }
         if("delete".equals(type)){
-
+            String id = req.getParameter("id");
+            applicationService.deleteById(Integer.parseInt(id));
         }
 
         if(page==null){
@@ -38,12 +43,21 @@ public class ApplicationController extends HttpServlet {
         }
 
         //分页
-        ApplicationService applicationService = new ApplicationService();
         List<Application> applications = applicationService.selectByPage(Integer.parseInt(page), 3);
-        req.setAttribute("apps",applications);
+        Iterator iter = applications.iterator();
+        List<ApplicationVo> appVoList = new ArrayList<>();
+
+        while(iter.hasNext()){
+            Application app = (Application)iter.next();
+            ApplicationVo appVo = new ApplicationVo();
+            appVo.setApp(app);
+            appVoList.add(appVo);
+        }
+
+        req.setAttribute("appVos",appVoList);
 
         //重定向
-        RequestDispatcher dispatcher=req.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
+        RequestDispatcher dispatcher=req.getRequestDispatcher("/WEB-INF/jsp/app_out.jsp");
         dispatcher.forward(req, resp);
     }
 }

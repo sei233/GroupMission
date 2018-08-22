@@ -84,11 +84,11 @@
         </a>
         <ul id="2" class="nav nav-list collapse">
             <li>
-                <a href="${pageContext.request.contextPath}/application"
+                <a href="${pageContext.request.contextPath}/app_out"
                    target=mainFrame>－ 返厂出库管理</a>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}#"
+                <a href="${pageContext.request.contextPath}/app_in"
                    target=mainFrame>－ 返厂入库管理</a>
             </li>
             <li>

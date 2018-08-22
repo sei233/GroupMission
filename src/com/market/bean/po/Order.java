@@ -1,4 +1,4 @@
-package com.market.bean;
+package com.market.bean.po;
 
 public class Order {
     private Integer orderId;
