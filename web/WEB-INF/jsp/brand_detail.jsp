@@ -20,8 +20,19 @@
     <form action="${pageContext.request.contextPath}/brand_detail?type=query" method="post" class="form-inline">
         <div>
             <div class="form-group">
-                <input type="text" name="condition" class="form-control" value="">
+                编号<input type="text" name="condition" class="form-control" value=""><br>
             </div>
+
+            <div class="form-group">
+                品牌名称<input type="text" name="condition" class="form-control" value=""><br>
+            </div>
+            <div class="form-group">
+                品牌网址<input type="text" name="condition" class="form-control" value="">
+            </div>
+            <div class="form-group">
+                品牌描述<input type="textarea" name="condition" class="form-control" value="">
+            </div>
+
             <a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/brand_out?type=find">查询</a>
             <a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/brand_out?type=add">添加</a>
             <a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/brand_out?type=export">导出</a>

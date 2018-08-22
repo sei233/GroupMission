@@ -1,13 +1,13 @@
 package com.market.service.Impl;
 
-import com.market.bean.po.type;
+import com.market.bean.po.Type;
 import com.market.dao.Dao;
 import com.market.service.BasicOperate;
 
 import java.util.List;
 
 public class TypeService  implements BasicOperate {
-    Dao<type> d = new Dao<type>();
+    Dao<Type> d = new Dao<Type>();
     @Override
     public int addObj(Object... objects) {
         return d.AddDeleteChange(SqlSmt.INSERT_TYPE,objects);
@@ -24,12 +24,12 @@ public class TypeService  implements BasicOperate {
     }
 
     @Override
-    public type findObjById(Integer id) {
-        return d.loadObjextById(type.class,SqlSmt.FINDID_TYPE,id);
+    public Type findObjById(Integer id) {
+        return d.loadObjextById(Type.class,SqlSmt.FINDID_TYPE,id);
     }
 
     @Override
-    public List<type> findObj(Object... objects) {
-        return d.loadAllObjects(type.class,SqlSmt.FINDALL_TYPE,objects);
+    public List<Type> findObj(Object... objects) {
+        return d.loadAllObjects(Type.class,SqlSmt.FINDALL_TYPE,objects);
     }
 }
