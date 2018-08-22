@@ -27,6 +27,14 @@
         <servlet-name>Brand</servlet-name>
         <url-pattern>/brand_out</url-pattern>
     </servlet-mapping>
+    <!--<servlet>
+        <servlet-name>BrandDetail</servlet-name>
+        <servlet-class>com.market.controller.BrandController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BrandDetail</servlet-name>
+        <url-pattern>/brand_detail</url-pattern>
+    </servlet-mapping>-->
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>

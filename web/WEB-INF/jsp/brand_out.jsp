@@ -36,30 +36,20 @@
     <link rel="stylesheet" href="/css/page.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-    <script type="text/javascript">
-        $(function () {
-            $('.pageTest').page({
-                leng: 10,//分页总数
-                activeClass: 'activP', //active 类样式定义
-                clickBack: function (page) {
-                    window.location.reload();
-                }
-            });
-        });
-    </script>
 
 </head>
 <body>
 <br>
 <div class="container">
-    <form action="${pageContext.request.contextPath}/brand_out?type=query" method="post" class="form-inline">
+    <form action="BrandController?type=find" method="post" class="form-inline">
         <div>
             <div class="form-group">
-                <input type="text" name="condition" class="form-control" placeholder="返厂出库单号">
+                <input type="text" name="id" class="form-control" placeholder="请输入查询 id或名称">
             </div>
-            <a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/brand_out?type=find">查询</a>
+            <input class="btn btn-warning" type="submit" value="查询">
+            <%--<a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/brand_out?type=find">查询</a>--%>
             <a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/brand_out?type=add">添加</a>
-            <a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/brand_out?type=export">导出</a>
+            <%--<a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/brand_out?type=export">导出</a>--%>
         </div>
         <br>
         <br>
@@ -102,4 +92,42 @@
     </form>
 </div>
 </body>
+<script type="text/javascript">
+    $(function () {
+        $('.pageTest').page({
+            leng: 10,//分页总数
+            activeClass: 'activP', //active 类样式定义
+            clickBack: function (page) {
+                window.location.reload();
+            }
+        });
+    });
+    var msg = "${msg}";
+    if(msg=='deletesucc'){
+        alert("删除成功");
+
+        window.location.replace("${pageContext.request.contextPath }/brand_out");
+    }
+    if (msg=='deletefail'){
+        alert("删除失败");
+
+        window.location.replace("${pageContext.request.contextPath }/brand_out");
+    }
+    if(msg=='addsucc'){
+        alert("添加成功");
+        window.location.replace("${pageContext.request.contextPath }/brand_out");
+    }
+    if (msg=='addfail'){
+        alert("添加失败");
+        window.location.replace("${pageContext.request.contextPath }/brand_out");
+    }
+    if(msg=='updatesucc'){
+        alert("修改成功");
+        window.location.replace("${pageContext.request.contextPath }/brand_out");
+    }
+    if (msg=='updatefail'){
+        alert("修改失败");
+        window.location.replace("${pageContext.request.contextPath }/brand_out");
+    }
+</script>
 </html>

@@ -125,7 +125,8 @@ public class Dao<T> {
             PreparedStatement smt = connection.prepareStatement(sql);
             if (objects != null && objects.length > 0) {
                 for (int i = 0; i < objects.length; i++) {
-                    smt.setObject(i+1,objects[i]);
+                    if (objects[i]!="")
+                        smt.setObject(i+1,objects[i]);
                 }
             }
             ResultSet rs = smt.executeQuery();
