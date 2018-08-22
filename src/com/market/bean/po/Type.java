@@ -1,15 +1,15 @@
 package com.market.bean.po;
 
-public class type {
+public class Type {
     private Integer typeId;
     private String typeName;
     private String typeDescribe;
     private Integer typeState;//0一类1二类
 
-    public type() {
+    public Type() {
     }
 
-    public type(Integer typeId, String typeName, String typeDescribe, Integer typeState) {
+    public Type(Integer typeId, String typeName, String typeDescribe, Integer typeState) {
         this.typeId = typeId;
         this.typeName = typeName;
         this.typeDescribe = typeDescribe;

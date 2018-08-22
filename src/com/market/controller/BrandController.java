@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 @WebServlet(name = "BrandController")
 public class BrandController extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         String type = request.getParameter("type");

@@ -1,0 +1,36 @@
+package com.market.service.impl;
+
+import com.market.bean.po.Role;
+import com.market.dao.Dao;
+import com.market.service.BasicOperate;
+import java.util.List;
+
+public class RoleService implements BasicOperate {
+
+    Dao<Role> d = new Dao<Role>();
+    @Override
+    public int addObj(Object... objects) {
+        return d.AddDeleteChange(SqlSmt.INSERT_ROLE,objects);
+    }
+
+    @Override
+    public int deleteObj(Integer id) {
+        return d.AddDeleteChange(SqlSmt.DELETE_ROLE,id);
+    }
+
+    @Override
+    public int changeObj(Object... objects) {
+        return d.AddDeleteChange(SqlSmt.UPDATE_ROLE,objects);
+    }
+
+    @Override
+    public Role findObjById(Integer id) {
+        return d.loadObjectById(Role.class,SqlSmt.FINDID_ROLE,id);
+    }
+
+    @Override
+    public List<Role> findObj(Object... objects) {
+        return d.loadAllObjects(Role.class,SqlSmt.FINDALL_ROLE,objects);
+    }
+}
+
