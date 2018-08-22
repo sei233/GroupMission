@@ -31,4 +31,6 @@ public class SqlSmt {
     public static final String DELETE_GIFT="delete gift where giftId=?";
     public static final String FINDID_GIFT="select * from gift where giftId=?";
     public static final String FINDALL_GIFT="select * from gift where 1=1";
+    //application的sql语句
+    public static final String FINDPAGE_APP="select * from application limit ?,?";
 }

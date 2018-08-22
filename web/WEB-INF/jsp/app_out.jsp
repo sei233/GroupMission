@@ -97,7 +97,7 @@
         <div>
             <div class="form-group">
                 <label>返厂出库单号:</label>
-                <input type="text" name="appID" class="form-control" placeholder="返厂出库单号">
+                <input type="text" name="antiOutID" class="form-control" placeholder="返厂出库单号">
             </div>
 
             <div class="form-group">
@@ -128,24 +128,24 @@
         <div>
             <div class="form-group">
                 <label for="dtp_input1">制单时间:</label>
-                <div class="input-group date form_datetime" data-date="1979-09-16T05:25:07Z"
+                <div class="input-group date form_datetime" data-date="2018-08-01T01:00:00Z"
                      data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
                     <input class="form-control" size="30" type="text" value="" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                 </div>
-                <input type="hidden" id="dtp_input1" value=""/><br/>
+                <input type="hidden" name="docuTimeBegin" id="dtp_input1" value=""/><br/>
             </div>
 
             <div class="form-group">
                 <label for="dtp_input2">至</label>
-                <div class="input-group date form_datetime" data-date="1979-09-16T05:25:07Z"
+                <div class="input-group date form_datetime" data-date="2018-08-01T01:00:00Z"
                      data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input2">
                     <input class="form-control" size="30" type="text" value="" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                 </div>
-                <input type="hidden" id="dtp_input2" value=""/><br/>
+                <input type="hidden" name="docuTimeEnd" id="dtp_input2" value=""/><br/>
             </div>
         </div>
         <br>
@@ -158,7 +158,7 @@
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                 </div>
-                <input type="hidden" name="approvalTime" id="dtp_input3" value=""/><br/>
+                <input type="hidden" name="approvalTimeBegin" id="dtp_input3" value=""/><br/>
             </div>
 
             <div class="form-group">
@@ -169,7 +169,7 @@
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                 </div>
-                <input type="hidden" name="approvalTime" id="dtp_input4" value=""/><br/>
+                <input type="hidden" name="approvalTimeEnd" id="dtp_input4" value=""/><br/>
             </div>
         </div>
         <br>

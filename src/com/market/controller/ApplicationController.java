@@ -19,61 +19,57 @@ public class ApplicationController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req,resp);
+        doPost(req, resp);
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ApplicationService applicationService = new ApplicationService();
+        List<Application> applications = new ArrayList<>();
         String type = req.getParameter("type");
         String page = req.getParameter("page");
 
-        if("add".equals(type)){
+        if ("add".equals(type)) {
 
-        }
-        else if("query".equals(type)){
-            String appID = req.getParameter("appID");
-            System.out.print("返厂出库单号"+appID);
-
+        } else if ("query".equals(type)) {
+            String antiOutID = req.getParameter("antiOutID");
             String outSign = req.getParameter("outSign");
-            System.out.print("返厂出库标志"+outSign);
-
             String approvalState = req.getParameter("approvalState");
-            System.out.print("审核状态"+approvalState);
-
             String docuMaker = req.getParameter("docuMaker");
-            System.out.print("制单人"+docuMaker);
+//            String docuTimeBegin = req.getParameter("docuTimeBegin");
+//            String docuTimeEnd = req.getParameter("docuTimeEnd");
+//            String approvalTimeBegin = req.getParameter("approvalTimeBegin");
+//            String approvalTimeEnd = req.getParameter("approvalTimeEnd");
+//, docuTimeBegin, docuTimeEnd, approvalTimeBegin, approvalTimeEnd
+            applications=applicationService.findObj(antiOutID, outSign, approvalState, docuMaker);
 
-            String docuTime = req.getParameter("docuTime");
-            System.out.print("制单时间"+docuTime);
-
-            String approvalTime = req.getParameter("approvalTime");
-            System.out.print("审批时间"+approvalTime);
-        }
-        else if("delete".equals(type)){
+        } else if ("delete".equals(type)) {
             String id = req.getParameter("id");
-            applicationService.deleteById(Integer.parseInt(id));
+        } else {
+            if (page == null) {
+                page = "1";
+            }
+
+            //分页
+            applications = applicationService.selectByPage(Integer.parseInt(page), 3);
         }
 
-        if(page==null){
-            page="1";
-        }
 
-        //分页
-        List<Application> applications = applicationService.selectByPage(Integer.parseInt(page), 3);
+        //统一封装
         Iterator iter = applications.iterator();
         List<ApplicationVo> appVoList = new ArrayList<>();
 
-        while(iter.hasNext()){
-            Application app = (Application)iter.next();
+        while (iter.hasNext()) {
+            Application app = (Application) iter.next();
             ApplicationVo appVo = new ApplicationVo();
             appVo.setApp(app);
             appVoList.add(appVo);
-        }
 
-        req.setAttribute("appVos",appVoList);
+        }
+        req.setAttribute("appVos", appVoList);
 
         //重定向
-        RequestDispatcher dispatcher=req.getRequestDispatcher("/WEB-INF/jsp/app_out.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/app_out.jsp");
         dispatcher.forward(req, resp);
+
     }
 }
