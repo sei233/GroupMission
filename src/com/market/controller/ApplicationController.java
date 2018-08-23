@@ -30,8 +30,8 @@ public class ApplicationController extends HttpServlet {
         String type = req.getParameter("type");
         String page = req.getParameter("page");
 
-        if ("add".equals(type)) {
-
+        if ("addRe".equals(type)) {
+            addRe(req,resp);
         } else if ("query".equals(type)) {                                                                     //查询
             query(req, resp);
         } else if ("delete".equals(type)) {                                                                     //删除
@@ -44,6 +44,15 @@ public class ApplicationController extends HttpServlet {
             //转发
             dispatcher(req, resp);
         }
+    }
+
+    private void addRe(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //获取所有的商品信息
+
+        //把所有商品封装到request域里
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/app_add.jsp");
+        dispatcher.forward(req, resp);
     }
 
     private void delete(HttpServletRequest req, HttpServletResponse resp,String page) throws ServletException, IOException {
