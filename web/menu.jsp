@@ -5,7 +5,7 @@
   Time: 16:46
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <html>
 <head>
     <title>Title</title>
@@ -118,15 +118,15 @@
         </a>
         <ul id="3" class="nav nav-list collapse">
             <li>
-                <a href="${pageContext.request.contextPath}#"
+                <a href="${pageContext.request.contextPath}/user_out"
                    target=mainFrame>－ 用户管理</a>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}#"
+                <a href="${pageContext.request.contextPath}/role_out"
                    target=mainFrame>－ 角色管理</a>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}#"
+                <a href="${pageContext.request.contextPath}/permission_out"
                    target=mainFrame>－ 权限管理</a>
             </li>
             <li>

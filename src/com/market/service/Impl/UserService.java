@@ -4,12 +4,14 @@ import com.market.bean.po.User;
 import com.market.dao.Dao;
 import java.util.List;
 import com.market.service.BasicOperate;
-import com.market.service.Impl.SqlSmt;
 
 
 public class UserService implements BasicOperate {
+    Dao<User> d = null;
+    public UserService(){
+        d = new Dao<User>();
+    }
 
-    Dao<User> d = new Dao<User>();
     @Override
     public int addObj(Object... objects) {
         return d.AddDeleteChange(SqlSmt.INSERT_USER,objects);
