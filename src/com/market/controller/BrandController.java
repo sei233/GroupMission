@@ -88,25 +88,17 @@ public class BrandController extends HttpServlet {
             }
             case "find":{
                 String id =request.getParameter("id");
-                if (id!=null && id!="") {
-                    StringBuilder sb = new StringBuilder(SqlSmt.FINDALL_BRAND);
-                    sb.append(" and brandName like \'%");
-                    sb.append(id) ;
-                    sb.append("%\'");
-                    System.out.println(sb.toString());
-                    ArrayList<Brand> brand_list = new Dao<Brand>().loadAllObjects(Brand.class,sb.toString());
-                    try{
-                        Brand brand = bs.findObjById(Integer.parseInt(id));
-                        if (brand!=null)
-                            brand_list.add(brand);
-                    }catch (NumberFormatException e){
-                        e.printStackTrace();
-                    }finally {
-                        request.setAttribute("brand_list", brand_list);
-                        request.getRequestDispatcher("/WEB-INF/jsp/brand_out.jsp").forward(request, response);
-                    }
-
-
+                ArrayList<Brand> brand_list = (ArrayList<Brand> )bs.findObjByMultiCondition(id);
+                try{
+                    Brand brand = bs.findObjById(Integer.parseInt(id));
+                    if (brand!=null)
+                        brand_list.add(brand);
+                }catch (NumberFormatException e){
+                    System.out.println("当前输入不是数字，不能查找编号");
+                    e.printStackTrace();
+                }finally {
+                    request.setAttribute("brand_list", brand_list);
+                    request.getRequestDispatcher("/WEB-INF/jsp/brand_out.jsp").forward(request, response);
                 }
                 break;
             }

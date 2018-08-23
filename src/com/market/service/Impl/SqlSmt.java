@@ -52,4 +52,12 @@ public class SqlSmt {
     public static final String DELETE_PERMISSION="delete from permission where permissionId=?";
     public static final String FINDID_PERMISSION="select * from permission where permissionId=?";
     public static final String FINDALL_PERMISSION="select * from permission where 1=1";
+    //product表
+    public static final String FINDALL_PRODUCT = "select * from product where 1=1";
+    public static final String FINDID_PRODUCT = "select * from product where productId=?";
+
+    //获取某表的某一列不重复值
+    public static final String GET_COLUMN = "select distinct ? from ?";
+
+
 }
