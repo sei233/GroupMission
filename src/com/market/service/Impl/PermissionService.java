@@ -1,4 +1,4 @@
-package com.market.service.impl;
+package com.market.service.Impl;
 
 import com.market.bean.po.Permission;
 import com.market.dao.Dao;
@@ -25,7 +25,7 @@ public class PermissionService implements BasicOperate {
 
     @Override
     public Permission findObjById(Integer id) {
-        return d.loadObjectById(Permission.class,SqlSmt.FINDID_PERMISSION,id);
+        return d.loadObjextById(Permission.class,SqlSmt.FINDID_PERMISSION,id);
     }
 
     @Override

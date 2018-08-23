@@ -1,9 +1,10 @@
-package com.market.service.impl;
+package com.market.service.Impl;
 
 import com.market.bean.po.User;
 import com.market.dao.Dao;
 import java.util.List;
 import com.market.service.BasicOperate;
+import com.market.service.Impl.SqlSmt;
 
 
 public class UserService implements BasicOperate {
@@ -26,7 +27,7 @@ public class UserService implements BasicOperate {
 
     @Override
     public User findObjById(Integer id) {
-        return d.loadObjectById(User.class,SqlSmt.FINDID_USER,id);
+        return d.loadObjextById(User.class,SqlSmt.FINDID_USER,id);
     }
 
     @Override

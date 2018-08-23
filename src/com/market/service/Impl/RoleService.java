@@ -1,8 +1,10 @@
-package com.market.service.impl;
+package com.market.service.Impl;
 
 import com.market.bean.po.Role;
 import com.market.dao.Dao;
 import com.market.service.BasicOperate;
+import com.market.service.Impl.SqlSmt;
+
 import java.util.List;
 
 public class RoleService implements BasicOperate {
@@ -25,7 +27,7 @@ public class RoleService implements BasicOperate {
 
     @Override
     public Role findObjById(Integer id) {
-        return d.loadObjectById(Role.class,SqlSmt.FINDID_ROLE,id);
+        return d.loadObjextById(Role.class,SqlSmt.FINDID_ROLE,id);
     }
 
     @Override
