@@ -63,12 +63,12 @@ public class Dao<T> {
     public int AddDeleteChange(String sql,Object... objects){
         Connection connection = getConnection();
         try {
-            int j=0;
+            int j=1;
             PreparedStatement smt = connection.prepareStatement(sql);
             if (objects != null && objects.length > 0) {
                 for (int i = 0; i < objects.length; i++) {
-                    { smt.setObject(j+1,objects[i]);
-                      j++; }
+                    { smt.setObject(j++,objects[i]);
+                       }
                 }
             }
             return smt.executeUpdate();
@@ -123,12 +123,12 @@ public class Dao<T> {
     public ArrayList<T> loadAllObjects(Class<T> cls,String sql,Object... objects){
         Connection connection = getConnection();
         try {
-            int j=0;
+            int j = 1;
             PreparedStatement smt = connection.prepareStatement(sql);
             if (objects != null && objects.length > 0) {
                 for (int i = 0; i < objects.length; i++) {
-                    if(objects[i] != "" &&objects[i]!=null)
-                    {smt.setObject(j+1,objects[i]);j++;}
+                    if (objects[i]!=""&&objects[i]!=null)
+                        smt.setObject(j++,objects[i]);
                 }
             }
             ResultSet rs = smt.executeQuery();

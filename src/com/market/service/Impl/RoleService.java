@@ -9,7 +9,10 @@ import java.util.List;
 
 public class RoleService implements BasicOperate {
 
-    Dao<Role> d = new Dao<Role>();
+    Dao<Role> d = null;
+    public RoleService(){
+        d = new Dao<Role>();
+    }
     @Override
     public int addObj(Object... objects) {
         return d.AddDeleteChange(SqlSmt.INSERT_ROLE,objects);

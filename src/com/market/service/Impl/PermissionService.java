@@ -1,5 +1,6 @@
 package com.market.service.Impl;
 
+import com.market.bean.po.Brand;
 import com.market.bean.po.Permission;
 import com.market.dao.Dao;
 import com.market.service.BasicOperate;
@@ -7,7 +8,10 @@ import java.util.List;
 
 public class PermissionService implements BasicOperate {
 
-    Dao<Permission> d = new Dao<Permission>();
+    Dao<Permission> d = null;
+    public PermissionService(){
+        d = new Dao<Permission>();
+    }
     @Override
     public int addObj(Object... objects) {
         return d.AddDeleteChange(SqlSmt.INSERT_PERMISSION,objects);

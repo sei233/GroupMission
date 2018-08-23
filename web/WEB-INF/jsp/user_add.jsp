@@ -1,0 +1,112 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: adorn
+  Date: 2018/8/23
+  Time: 下午2:49
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <%--<script src="/js/jquery.min.js"></script>--%>
+    <script type="text/javascript" src="js/page.js"></script>
+    <link rel="stylesheet" href="css/page.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <form action="/UserController?type=addToUser" method="post" class="form-inline">
+        <div>
+            <%--<a class="btn btn-primary box_relative" href="${pageContext.request.contextPath }/user_detail?type=export">导入</a>--%>
+            <%--<c:out value="${user}"></c:out>--%>
+            <br>
+            <br>
+            <div class="form-group">
+                <span>用户账户&nbsp;</span><input type="text" name="userAccount" class="form-control" >
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <span >用户姓名&nbsp;</span><input type="text" name="userName" class="form-control" >
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <span>用户性别&nbsp;</span><input type="text" name="userSex" class="form-control" >
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <span>用户部门&nbsp;</span><input type="text" name="userSDept" class="form-control" >
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <span>用户状态&nbsp;</span><input type="text" name="userStatus" class="form-control" >
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <span>用户职位&nbsp;</span><input type="text" name="userTitle" class="form-control" >
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <span>用户电话&nbsp;</span><input type="text" name="userPhone" class="form-control" >
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <span>用户邮箱&nbsp;</span><input type="text" name="userEmail" class="form-control" >
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <span>用户角色&nbsp;</span><input type="text" name="userRole" class="form-control" >
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <span>备注1&nbsp;</span><input type="text" name="userRemark1" class="form-control" >
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <span>备注2&nbsp;</span><input type="text" name="userRemark2" class="form-control" >
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <span>备注3&nbsp;</span><input type="text" name="userRemark3" class="form-control" >
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <span>备注4&nbsp;</span><input type="text" name="userRemark4" class="form-control" >
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <span>备注5&nbsp;</span><input type="text" name="userRemark5" class="form-control" >
+            </div>
+            <br>
+            <br>
+
+            <input class="btn btn-warning" type="submit" value="添加">
+            <input class="btn btn-warning" type="reset" value="重置">
+            <%--<a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/user_out?type=addToUser">添加</a>--%>
+            <a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/user_out">返回</a>
+        </div>
+
+
+    </form>
+</div>
+</body>
+<script type="text/javascript">
+
+
+</script>
+</html>

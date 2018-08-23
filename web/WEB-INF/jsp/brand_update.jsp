@@ -12,9 +12,9 @@
     <title>Title</title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <%--<script src="/js/jquery.min.js"></script>--%>
-    <script type="text/javascript" src="/js/page.js"></script>
-    <link rel="stylesheet" href="/css/page.css">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script type="text/javascript" src="js/page.js"></script>
+    <link rel="stylesheet" href="css/page.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
 <div class="container">
@@ -38,8 +38,7 @@
             <br>
             <br>
             <div class="form-group">
-                <span>品牌描述&nbsp;</span>
-                <input  name="brandDescribe" class="form-control"  value="${brand.brandDescribe}"></input>
+                <span>品牌描述&nbsp;</span><input  name="brandDescribe" class="form-control"  value="${brand.brandDescribe}"></input>
             </div>
             <br>
             <br>
