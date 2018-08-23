@@ -35,6 +35,30 @@
         <servlet-name>BrandDetail</servlet-name>
         <url-pattern>/brand_detail</url-pattern>
     </servlet-mapping>-->
+    <servlet>
+    <servlet-name>User</servlet-name>
+    <servlet-class>com.market.controller.UserController</servlet-class>
+</servlet>
+    <servlet-mapping>
+        <servlet-name>User</servlet-name>
+        <url-pattern>/user_out</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Role</servlet-name>
+        <servlet-class>com.market.controller.RoleController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Role</servlet-name>
+        <url-pattern>/role_out</url-pattern>
+    </servlet-mapping>
+    <servlet>
+    <servlet-name>Permission</servlet-name>
+    <servlet-class>com.market.controller.PermissionController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Permission</servlet-name>
+        <url-pattern>/permission_out</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>

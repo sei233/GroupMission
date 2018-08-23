@@ -17,8 +17,34 @@ public class User {
     private String userRemark3;
     private String userRemark4;
     private String userRemark5;
-    private Integer userDept;
-    private Integer userRole;
+    private int userDept;
+    private int userRole;
+    private Dept dept;
+    private Role role;
+
+    public User() {
+    }
+
+    public User(Integer userId, String userAccount, String userName, String userPassword, Integer userSex, Integer userStatus, String userTitle, String userPhone, String userEmail, String userRemark1, String userRemark2, String userRemark3, String userRemark4, String userRemark5, int userDept, int userRole, Dept dept, Role role) {
+        this.userId=userId;
+        this.userAccount=userAccount;
+        this.userName=userName;
+        this.userPassword=userPassword;
+        this.userSex=userSex;
+        this.userStatus=userStatus;
+        this.userTitle=userTitle;
+        this.userPhone=userPhone;
+        this.userEmail=userEmail;
+        this.userRemark1=userRemark1;
+        this.userRemark2=userRemark2;
+        this.userRemark3=userRemark3;
+        this.userRemark3=userRemark4;
+        this.userRemark5=userRemark5;
+        this.userDept=userDept;
+        this.userRole=userRole;
+        this.dept=dept;
+        this.role=role;
+    }
 
     public Integer getUserId() { return userId; }
     public void setUserId(Integer userId) { this.userId = userId; }
@@ -62,11 +88,26 @@ public class User {
     public String getUserRemark5() { return userRemark5; }
     public void setUserRemark5(String userRemark5) { this.userRemark5 = userRemark5; }
 
-    public Integer getUserDept() { return userDept; }
-    public void setUserDept(Integer userDept) { this.userDept = userDept; }
+    public int getUserDept() { return userDept; }
+    public void setUserDept(int userDept) { this.userDept = userDept; }
 
-    public Integer getUserRole() { return userRole; }
-    public void setUserRole(Integer userRole) { this.userRole = userRole; }
+    public int getUserRole() { return userRole; }
+    public void setUserRole(int userRole) { this.userRole = userRole; }
 
 
+    public Dept getDept() {
+        return dept;
+    }
+
+    public void setDept(Dept dept) {
+        this.dept = dept;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }
