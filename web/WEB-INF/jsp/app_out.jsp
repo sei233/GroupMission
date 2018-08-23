@@ -33,8 +33,7 @@
         }
     </style>
 
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <%--<script src="/js/jquery.min.js"></script>--%>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap-datetimepicker.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap-datetimepicker.fr.js"></script>
@@ -97,7 +96,7 @@
         <div>
             <div class="form-group">
                 <label>返厂出库单号:</label>
-                <input type="text" name="appID" class="form-control" placeholder="返厂出库单号">
+                <input type="text" name="antiOutID" class="form-control" placeholder="返厂出库单号">
             </div>
 
             <div class="form-group">
@@ -113,9 +112,9 @@
                 <label>审核状态:</label>
                 <select class="btn btn-default" name="approvalState">
                     <option value="">请选择</option>
-                    <option value="0">不通过</option>
-                    <option value="1">审批通过</option>
-                    <option value="2">未审批</option>
+                    <option value="1">不通过</option>
+                    <option value="2">审批通过</option>
+                    <option value="0">未审批</option>
                 </select>
             </div>
 
@@ -128,24 +127,24 @@
         <div>
             <div class="form-group">
                 <label for="dtp_input1">制单时间:</label>
-                <div class="input-group date form_datetime" data-date="1979-09-16T05:25:07Z"
+                <div class="input-group date form_datetime" data-date="2018-08-01T01:00:00Z"
                      data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
                     <input class="form-control" size="30" type="text" value="" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                 </div>
-                <input type="hidden" id="dtp_input1" value=""/><br/>
+                <input type="hidden" name="docuTimeBegin" id="dtp_input1" value=""/><br/>
             </div>
 
             <div class="form-group">
                 <label for="dtp_input2">至</label>
-                <div class="input-group date form_datetime" data-date="1979-09-16T05:25:07Z"
+                <div class="input-group date form_datetime" data-date="2018-08-01T01:00:00Z"
                      data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input2">
                     <input class="form-control" size="30" type="text" value="" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                 </div>
-                <input type="hidden" id="dtp_input2" value=""/><br/>
+                <input type="hidden" name="docuTimeEnd" id="dtp_input2" value=""/><br/>
             </div>
         </div>
         <br>
@@ -158,7 +157,7 @@
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                 </div>
-                <input type="hidden" name="approvalTime" id="dtp_input3" value=""/><br/>
+                <input type="hidden" name="approvalTimeBegin" id="dtp_input3" value=""/><br/>
             </div>
 
             <div class="form-group">
@@ -169,7 +168,7 @@
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                 </div>
-                <input type="hidden" name="approvalTime" id="dtp_input4" value=""/><br/>
+                <input type="hidden" name="approvalTimeEnd" id="dtp_input4" value=""/><br/>
             </div>
         </div>
         <br>
@@ -179,12 +178,16 @@
                 <a class="btn btn-info box_relative"
                    href="${pageContext.request.contextPath }/app_out?type=export">导出</a>
                 <input type="submit" class="btn btn-info" value="查询">
-                <a class="btn btn-danger box_relative"
-                   href="${pageContext.request.contextPath }/app_out?type=delete">删除</a>
             </div>
         </div>
+    </form>
 
-        <hr>
+    <hr>
+
+    <form action="${pageContext.request.contextPath}/app_out?type=delete" method="post">
+        <div class="form-group">
+            <input type="submit" class="btn btn-danger" value="删除">
+        </div>
 
         <div class="form-group">
             <table id="table" border="1" class="table table-striped table-bordered table-hover">
@@ -203,8 +206,8 @@
                     <tr class="active">
                         <td>${appVo.app.appID}</td>
                         <td>
-                            <c:if test="${appVo.app.approvalState != 1}">
-                                <input type="checkbox">
+                            <c:if test="${appVo.app.approvalState == 0}">
+                                <input type="checkbox" name="appID" value="${appVo.app.appID}">
                             </c:if>
                         </td>
                         <td>${appVo.app.antiOutID}</td>

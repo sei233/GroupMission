@@ -14,66 +14,98 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-
 public class ApplicationController extends HttpServlet {
+    private ApplicationService applicationService = new ApplicationService();
+    private List<Application> applications = new ArrayList<>();
+    private List<ApplicationVo> appVoList = new ArrayList<>();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req,resp);
+        doPost(req, resp);
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ApplicationService applicationService = new ApplicationService();
+
+
         String type = req.getParameter("type");
         String page = req.getParameter("page");
 
-        if("add".equals(type)){
+        if ("add".equals(type)) {
 
+        } else if ("query".equals(type)) {                                                                     //查询
+            query(req, resp);
+        } else if ("delete".equals(type)) {                                                                     //删除
+            delete(req,resp,page);
+        } else {                                                                                        //首页
+            show(page);
+            //封装
+            appVoList = pack();
+            req.setAttribute("appVos", appVoList);
+            //转发
+            dispatcher(req, resp);
         }
-        else if("query".equals(type)){
-            String appID = req.getParameter("appID");
-            System.out.print("返厂出库单号"+appID);
+    }
 
-            String outSign = req.getParameter("outSign");
-            System.out.print("返厂出库标志"+outSign);
-
-            String approvalState = req.getParameter("approvalState");
-            System.out.print("审核状态"+approvalState);
-
-            String docuMaker = req.getParameter("docuMaker");
-            System.out.print("制单人"+docuMaker);
-
-            String docuTime = req.getParameter("docuTime");
-            System.out.print("制单时间"+docuTime);
-
-            String approvalTime = req.getParameter("approvalTime");
-            System.out.print("审批时间"+approvalTime);
+    private void delete(HttpServletRequest req, HttpServletResponse resp,String page) throws ServletException, IOException {
+        String[] appIDs = req.getParameterValues("appID");
+        if(appIDs!=null) {
+            for (int i = 0; i < appIDs.length; i++) {
+                applicationService.deleteObj(Integer.parseInt(appIDs[i]));
+            }
         }
-        else if("delete".equals(type)){
-            String id = req.getParameter("id");
-            applicationService.deleteById(Integer.parseInt(id));
-        }
+        show(page);
 
-        if(page==null){
-            page="1";
-        }
+        //封装
+        appVoList = pack();
+        req.setAttribute("appVos", appVoList);
 
+        //重定向
+        resp.sendRedirect("/app_out");
+    }
+
+    private void query(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String antiOutID = req.getParameter("antiOutID");
+        String outSign = req.getParameter("outSign");
+        String approvalState = req.getParameter("approvalState");
+        String docuMaker = req.getParameter("docuMaker");
+        String docuTimeBegin = req.getParameter("docuTimeBegin");
+        String docuTimeEnd = req.getParameter("docuTimeEnd");
+        String approvalTimeBegin = req.getParameter("approvalTimeBegin");
+        String approvalTimeEnd = req.getParameter("approvalTimeEnd");
+        applications=applicationService.findObj(antiOutID, outSign, approvalState, docuMaker, docuTimeBegin, docuTimeEnd, approvalTimeBegin, approvalTimeEnd);
+
+        //封装
+        appVoList = pack();
+        req.setAttribute("appVos", appVoList);
+
+        dispatcher(req,resp);
+    }
+
+    private void show(String page){
+        if (page == null) {
+            page = "1";
+        }
         //分页
-        List<Application> applications = applicationService.selectByPage(Integer.parseInt(page), 3);
+        applications = applicationService.selectByPage(Integer.parseInt(page), 5);
+    }
+
+    //统一封装applications
+    private List<ApplicationVo> pack(){
         Iterator iter = applications.iterator();
         List<ApplicationVo> appVoList = new ArrayList<>();
 
-        while(iter.hasNext()){
-            Application app = (Application)iter.next();
+        while (iter.hasNext()) {
+            Application app = (Application) iter.next();
             ApplicationVo appVo = new ApplicationVo();
             appVo.setApp(app);
             appVoList.add(appVo);
+
         }
+        return appVoList;
+    }
 
-        req.setAttribute("appVos",appVoList);
-
-        //重定向
-        RequestDispatcher dispatcher=req.getRequestDispatcher("/WEB-INF/jsp/app_out.jsp");
+    private void dispatcher(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/app_out.jsp");
         dispatcher.forward(req, resp);
     }
 }
