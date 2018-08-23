@@ -4,6 +4,7 @@ import com.market.bean.po.Brand;
 import com.market.dao.Dao;
 import com.market.service.BasicOperate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BrandService implements BasicOperate {
@@ -37,5 +38,12 @@ public class BrandService implements BasicOperate {
     @Override
     public List<Brand> findObj(Object... objects) {
         return d.loadAllObjects(Brand.class,SqlSmt.FINDALL_BRAND,objects);
+    }
+
+    public List<Brand> findObjByMultiCondition(String id) {
+        StringBuilder sb = new StringBuilder(SqlSmt.FINDALL_BRAND);
+        sb.append(" and brandName like ?");
+        id = "%"+id+"%";
+        return d.loadAllObjects(Brand.class,sb.toString(),id);
     }
 }
