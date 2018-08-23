@@ -44,7 +44,7 @@
     <form action="${pageContext.request.contextPath }/type_out?type=find" method="post" class="form-inline">
         <div>
             <div class="form-group">
-                <input type="text"  name="id" class="form-control" placeholder="请输入查询 id或名称">
+                <input type="text"  name="id" class="form-control" placeholder="请输入查询的类型名称">
             </div>
             <input class="btn btn-warning" type="submit"  value="查询" onclick="return check(this.form)">
             <a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/type_out?type=add">添加</a>
