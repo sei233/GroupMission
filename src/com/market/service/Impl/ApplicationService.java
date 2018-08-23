@@ -60,10 +60,15 @@ public class ApplicationService implements BasicOperate {
             if(i==0) sql.append("docuMaker like ? ");
             i=1;
         }
-//        if(objects[4]!=""){sql.append("docuTimeBegin = ? and ");}
-//        if(objects[5]!=""){sql.append("docuTimeEnd = ? and ");}
-//        if(objects[6]!=""){sql.append("approvalTimeBegin = ? and ");}
-//        if(objects[7]!=""){sql.append("approvalTimeEnd = ?");}
+        if(objects[4]!=""&&objects[5]!=""){
+            if(i==1) sql.append("and docuTime between ? and ? ");
+            if(i==0) sql.append("docuTime between ? and ? ");
+            i=1;
+        }
+        if(objects[6]!=""&&objects[7]!=""){
+            if(i==1) sql.append("and approvalTime between ? and ? ");
+            if(i==0) sql.append("approvalTime between ? and ? ");
+        }
         return appDao.loadAllObjects(Application.class,sql.toString(),objects);
     }
 }

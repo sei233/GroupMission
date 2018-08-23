@@ -35,12 +35,11 @@ public class ApplicationController extends HttpServlet {
             String outSign = req.getParameter("outSign");
             String approvalState = req.getParameter("approvalState");
             String docuMaker = req.getParameter("docuMaker");
-//            String docuTimeBegin = req.getParameter("docuTimeBegin");
-//            String docuTimeEnd = req.getParameter("docuTimeEnd");
-//            String approvalTimeBegin = req.getParameter("approvalTimeBegin");
-//            String approvalTimeEnd = req.getParameter("approvalTimeEnd");
-//, docuTimeBegin, docuTimeEnd, approvalTimeBegin, approvalTimeEnd
-            applications=applicationService.findObj(antiOutID, outSign, approvalState, docuMaker);
+            String docuTimeBegin = req.getParameter("docuTimeBegin");
+            String docuTimeEnd = req.getParameter("docuTimeEnd");
+            String approvalTimeBegin = req.getParameter("approvalTimeBegin");
+            String approvalTimeEnd = req.getParameter("approvalTimeEnd");
+            applications=applicationService.findObj(antiOutID, outSign, approvalState, docuMaker, docuTimeBegin, docuTimeEnd, approvalTimeBegin, approvalTimeEnd);
 
         } else if ("delete".equals(type)) {
             String id = req.getParameter("id");
