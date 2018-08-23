@@ -33,8 +33,7 @@
         }
     </style>
 
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <%--<script src="/js/jquery.min.js"></script>--%>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap-datetimepicker.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap-datetimepicker.fr.js"></script>
@@ -113,9 +112,9 @@
                 <label>审核状态:</label>
                 <select class="btn btn-default" name="approvalState">
                     <option value="">请选择</option>
-                    <option value="0">不通过</option>
-                    <option value="1">审批通过</option>
-                    <option value="2">未审批</option>
+                    <option value="1">不通过</option>
+                    <option value="2">审批通过</option>
+                    <option value="0">未审批</option>
                 </select>
             </div>
 
@@ -179,12 +178,16 @@
                 <a class="btn btn-info box_relative"
                    href="${pageContext.request.contextPath }/app_out?type=export">导出</a>
                 <input type="submit" class="btn btn-info" value="查询">
-                <a class="btn btn-danger box_relative"
-                   href="${pageContext.request.contextPath }/app_out?type=delete">删除</a>
             </div>
         </div>
+    </form>
 
-        <hr>
+    <hr>
+
+    <form action="${pageContext.request.contextPath}/app_out?type=delete" method="post">
+        <div class="form-group">
+            <input type="submit" class="btn btn-danger" value="删除">
+        </div>
 
         <div class="form-group">
             <table id="table" border="1" class="table table-striped table-bordered table-hover">
@@ -203,8 +206,8 @@
                     <tr class="active">
                         <td>${appVo.app.appID}</td>
                         <td>
-                            <c:if test="${appVo.app.approvalState != 1}">
-                                <input type="checkbox">
+                            <c:if test="${appVo.app.approvalState == 0}">
+                                <input type="checkbox" name="appID" value="${appVo.app.appID}">
                             </c:if>
                         </td>
                         <td>${appVo.app.antiOutID}</td>

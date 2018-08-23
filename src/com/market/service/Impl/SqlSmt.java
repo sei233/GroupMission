@@ -33,6 +33,7 @@ public class SqlSmt {
     public static final String FINDALL_GIFT="select * from gift where 1=1";
     //application的sql语句
     public static final String FINDPAGE_APP="select * from application limit ?,?";
+    public static final String DELETE_APP="delete from application where appID=?";
     //user增删改查语句
     public static final String INSERT_USER="insert into user(userAccount,userName,userDept,userPassword,userSex,userStatus,userTitle,userPhone,userEmail,userRemark1,userRemark2,userRemark3,userRemark4,userRemark5,userRole) values(?,?,?,?,0,0,?,?,?,?,?,?,?,?,?)";
     public static final String UPDATE_USER="update user set userAccount=?,userName=?,userDept=?,userPassword=?,userTitle=?,userPhone=?,userEmail=?,userRemark1=?,userRemark2=?,userRemark3=?,userRemark4=?,userRemark5=?,userRole=? where userId=?";

@@ -21,7 +21,7 @@ public class ApplicationService implements BasicOperate {
 
     @Override
     public int deleteObj(Integer id) {
-        return 0;
+        return appDao.AddDeleteChange(SqlSmt.DELETE_APP,id);
     }
 
     @Override
@@ -69,6 +69,7 @@ public class ApplicationService implements BasicOperate {
             if(i==1) sql.append("and approvalTime between ? and ? ");
             if(i==0) sql.append("approvalTime between ? and ? ");
         }
+        sql.append("order by approvalState ASC");
         return appDao.loadAllObjects(Application.class,sql.toString(),objects);
     }
 }

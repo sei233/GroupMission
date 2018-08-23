@@ -37,11 +37,11 @@ public class ApplicationVo {
 
 
         if(app.getApprovalState()==0){
-            this.approvalState="不通过";
-        }else if(app.getApprovalState()==1){
-            this.approvalState="审批通过";
-        }else if(app.getApprovalState()==2){
             this.approvalState="未审批";
+        }else if(app.getApprovalState()==1){
+            this.approvalState="不通过";
+        }else if(app.getApprovalState()==2){
+            this.approvalState="审批通过";
         }
     }
 }
