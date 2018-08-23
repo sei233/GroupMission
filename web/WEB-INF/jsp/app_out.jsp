@@ -33,16 +33,16 @@
         }
     </style>
 
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap-datetimepicker.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap-datetimepicker.fr.js"></script>
-    <script type="text/javascript" src="/js/page.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.fr.js"></script>
+    <script type="text/javascript" src="js/page.js"></script>
 
 
-    <link rel="stylesheet" href="/css/page.css">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="css/page.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
 
     <script type="text/javascript">
         $(function () {
