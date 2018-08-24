@@ -50,6 +50,28 @@
                 return window.confirm("您确定添加吗?");
             })
         });
+
+        function test() {
+            var IDs = new Array();
+            $.each($('input:checkbox:checked'),function(){
+                IDs.push($(this).val());
+            });
+
+            $.ajax({                                     //AJAX获取二级的部门信息。 注意：这里的ajax采用的是jquery里面的方法，使用前需要导入jquery库。
+                url:'${pageContext.request.contextPath }/app_out?type=json',
+                type:'POST',
+                dataType:'JSON',
+                data:{
+                    IDs:JSON.stringify(IDs)
+                },
+                success:function (jsonStr){
+                    alert(jsonStr.toString());
+                },
+                error:function(data){
+                    alert("error");
+                }
+            })
+        }
     </script>
 
 </head>
@@ -69,17 +91,27 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
                                 <h4 class="modal-title" id="myModalLabel">选择商品</h4>
                             </div>
                             <div class="modal-body">
-                                <c:forEach items="${appVos}" var="appVo" varStatus="s">
-
+                                <c:forEach items="${products}" var="product" varStatus="s">
+                                    <div>
+                                        <label>
+                                            <input type="checkbox" name="productId" class="checkbox-inline"
+                                            value="${product.productId}">
+                                            <span class="btn">
+                                                    ${product.productName}|${product.productType}|${product.productColor}
+                                            </span>
+                                        </label>
+                                    </div>
                                 </c:forEach>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-primary">OK</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="test()">OK
+                                </button>
                             </div>
                         </div>
                     </div>
