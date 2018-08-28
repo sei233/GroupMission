@@ -1,7 +1,6 @@
 package com.market.controller;
 
 import com.market.bean.po.User;
-import com.market.bean.po.User;
 
 import com.market.dao.Dao;
 import com.market.service.Impl.SqlSmt;
@@ -37,7 +36,7 @@ import java.util.ArrayList;
                     Integer userSex= Integer.valueOf(request.getParameter("userSex"));
                     int userDept= Integer.parseInt(request.getParameter("userDept"));
                     Integer userStatus= Integer.valueOf(request.getParameter("userStatus"));
-                    String userTitle=request.getParameter("userTitle");
+                    Integer userTitle= Integer.valueOf(request.getParameter("userTitle"));
                     String userPhone=request.getParameter("userPhone");
                     String userEmail=request.getParameter("userEmail");
                     int userRole= Integer.parseInt(request.getParameter("userRole"));
@@ -84,7 +83,7 @@ import java.util.ArrayList;
                     Integer sex= Integer.valueOf(request.getParameter("userSex"));
                     int dept= Integer.parseInt(request.getParameter("userDept"));
                     Integer status= Integer.valueOf(request.getParameter("userStatus"));
-                    String title=request.getParameter("userTitle");
+                    Integer title= Integer.valueOf(request.getParameter("userTitle"));
                     String phone=request.getParameter("userPhone");
                     String email=request.getParameter("userEmail");
                     int role= Integer.parseInt(request.getParameter("userRole"));

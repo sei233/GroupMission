@@ -40,6 +40,7 @@ public class SqlSmt {
     public static final String DELETE_USER="delete from user where userId=?";
     public static final String FINDID_USER="select userAccount,userName,userDept,userSex,userStatus,userTitle,userPhone,userEmail,userRole,userRemark1,userRemark2,userRemark3,userRemark4,userRemark5 from user where userId=?";
     public static final String FINDALL_USER="select userAccount,userName,userDept,userSex,userStatus,userTitle,userPhone,userEmail,userRole,userRemark1,userRemark2,userRemark3,userRemark4,userRemark5 from user where 1=1";
+    public static final String UPDATE_PASSWORD="update user set userPassword=? where userAccount=?";
     //role增删改查语句
     public static final String INSERT_ROLE="insert into role(roleName,roleDesc,roleStatus,roleDept)values(?,?,0,?)";
     public static final String UPDATE_ROLE="update role set roleName=?,roleDesc=?,roleDept=? where roleId=?";

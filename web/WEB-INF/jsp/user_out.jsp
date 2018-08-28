@@ -65,6 +65,7 @@
         <br>
         <div class="form-group">
             <table id="table" border="1" class="table table-striped table-bordered table-hover">
+
                 <tr>
                     <th>编号</th>
                     <%--<th></th>--%>

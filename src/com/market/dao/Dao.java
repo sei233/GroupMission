@@ -42,7 +42,7 @@ public class Dao<T> {
      * 建立数据库连接
      * @return
      */
-    private Connection getConnection(){
+    public Connection getConnection(){
         try {
             Class.forName(driver);
             return DriverManager.getConnection(url,user,password);

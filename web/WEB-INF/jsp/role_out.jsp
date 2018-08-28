@@ -31,7 +31,7 @@
     </style>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <%--<script src="/js/jquery.min.js"></script>--%>
+    <%--<script src="js/jquery.min.js"></script>--%>
     <script type="text/javascript" src="js/page.js"></script>
     <link rel="stylesheet" href="css/page.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -46,10 +46,8 @@
             <div class="form-group">
                 <input type="text" name="id" class="form-control" placeholder="请输入查询 id或名称">
             </div>
-            <input class="btn btn-warning" type="submit" value="查询">
-            <%--<a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/role_out?type=find">查询</a>--%>
+            <input class="btn btn-warning" type="submit"  value="查询" onclick="return check(this.form)">
             <a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/role_out?type=add">添加</a>
-            <%--<a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/role_out?type=export">导出</a>--%>
         </div>
         <br>
         <br>
@@ -103,6 +101,14 @@
             }
         });
     });
+    function check(form) {
+        // alert("来了");
+        if (form.id.value==null || form.id.value==""){
+            alert("请输入您要查找的品牌编号或名称！");
+            return false;
+        }
+        return true;
+    }
     var msg = "${msg}";
     if(msg=='deletesucc'){
         alert("删除成功");

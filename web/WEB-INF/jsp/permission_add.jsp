@@ -40,12 +40,6 @@
             </div>
             <br>
             <br>
-            <div class="form-group">
-                <span>权限描述&nbsp;</span>
-                <textarea  name="permissionDesc" class="form-control" style="width: 200px;height: 150px"></textarea>
-            </div>
-            <br>
-            <br>
             <input class="btn btn-warning" type="submit" value="添加">
             <input class="btn btn-warning" type="reset" value="重置">
             <%--<a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/permission_out?type=addToPermission">添加</a>--%>

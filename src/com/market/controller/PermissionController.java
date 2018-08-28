@@ -1,6 +1,7 @@
 package com.market.controller;
 
 import com.market.bean.po.Permission;
+import com.market.bean.po.Permission;
 import com.market.dao.Dao;
 import com.market.service.Impl.PermissionService;
 import com.market.service.Impl.SqlSmt;
@@ -82,25 +83,17 @@ public class PermissionController extends HttpServlet {
             }
             case "find":{
                 String id =request.getParameter("id");
-                if (id!=null && id!="") {
-                    StringBuilder sb = new StringBuilder(SqlSmt.FINDALL_BRAND);
-                    sb.append(" and permissionName like \'%");
-                    sb.append(id) ;
-                    sb.append("%\'");
-                    System.out.println(sb.toString());
-                    ArrayList<Permission> permission_list = new Dao<Permission>().loadAllObjects(Permission.class,sb.toString());
-                    try{
-                        Permission permission = ps.findObjById(Integer.parseInt(id));
-                        if (permission!=null)
-                            permission_list.add(permission);
-                    }catch (NumberFormatException e){
-                        e.printStackTrace();
-                    }finally {
-                        request.setAttribute("permission_list", permission_list);
-                        request.getRequestDispatcher("/WEB-INF/jsp/permission_out.jsp").forward(request, response);
-                    }
-
-
+                ArrayList<Permission> permission_list = (ArrayList<Permission> )ps.findObjByMultiCondition(id);
+                try{
+                    Permission permission = ps.findObjById(Integer.parseInt(id));
+                    if (permission!=null)
+                        permission_list.add(permission);
+                }catch (NumberFormatException e){
+                    System.out.println("当前输入不是数字，不能查找编号");
+                    e.printStackTrace();
+                }finally {
+                    request.setAttribute("permission_list", permission_list);
+                    request.getRequestDispatcher("/WEB-INF/jsp/permission_out.jsp").forward(request, response);
                 }
                 break;
             }

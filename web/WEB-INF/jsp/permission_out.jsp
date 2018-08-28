@@ -46,7 +46,7 @@
             <div class="form-group">
                 <input type="text" name="id" class="form-control" placeholder="请输入查询 id或名称">
             </div>
-            <input class="btn btn-warning" type="submit" value="查询">
+            <input class="btn btn-warning" type="submit" value="查询" onclick="return check(this.form)">
             <%--<a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/permission_out?type=find">查询</a>--%>
             <a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/permission_out?type=add">添加</a>
             <%--<a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/permission_out?type=export">导出</a>--%>
@@ -61,7 +61,7 @@
                     <th>权限名称</th>
                     <th>权限描述</th>
                     <th>权限操作</th>
-                    <th colspan="3">操作</th>
+                    <th colspan="2">操作</th>
                 </tr>
                 <c:forEach items="${permission_list}" var="permission" varStatus="s">
                     <tr class="active">
@@ -99,6 +99,14 @@
             }
         });
     });
+    function check(form) {
+        // alert("来了");
+        if (form.id.value==null || form.id.value==""){
+            alert("请输入您要查找的品牌编号或名称！");
+            return false;
+        }
+        return true;
+    }
     var msg = "${msg}";
     if(msg=='deletesucc'){
         alert("删除成功");

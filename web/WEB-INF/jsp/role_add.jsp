@@ -36,7 +36,7 @@
             <br>
             <br>
             <div class="form-group">
-                <span >角色状态&nbsp;</span> <select class="btn btn-default" name="status">
+                <span >角色状态&nbsp;</span> <select class="btn btn-default" name="roleStatus">
                 <option value="">请选择</option>
                 <option value="0">有效</option>
                 <option value="1">无效</option>
