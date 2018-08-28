@@ -59,9 +59,10 @@ public class SqlSmt {
     //activity表操作
     public static final String INSERT_ACTIVITY = "insert into activity(activityName,beginTime,endTime,goodId,goodName,goodPrice,activityNumber,priceRange,activityPrice,reason,remarks) values(?,?,?,?,?,?,?,?,?,?,?)";
     public static final String DELETE_ACTIVITY = "delete from activity where activityId=?";
-    public static final String UPDATE_ACTIVITY = "update activity set activityName=?,beginTime=?,endTime=?,priceRange=?,reason=?,remarks=? where activityId=?";
+    public static final String UPDATE_ACTIVITY = "update activity set activityName=?,beginTime=?,endTime=?,priceRange=?,reason=?,remarks=?,activityNumber=?,activityPrice=? where activityId=?";
     public static final String FINDID_ACTIVITY = "select * from activity where activityId=?";
     public static final String FINDALL_ACTIVITY = "select * from activity where 1=1";
+    public static final String UPDATE_APV = "update activity set approveState=?,approveComment=?,approveDate=? where activityId=?";
 
     //    //firstGood增删改查语句
 //    public static final String INSERT_FIRSTGOOD="insert into firstGood(goodName,adoptPrice,marketPrice,shopPrice,minNo,adopt,creatTime,updateTime,operator,typeId,productId) values(?,?,?,?,?,?,?,?,?,?,?) ";
