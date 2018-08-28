@@ -6,7 +6,7 @@ import com.market.service.BasicOperate;
 
 import java.util.List;
 
-public class giftService implements BasicOperate {
+public class GiftService implements BasicOperate {
     Dao<Gift> d = new Dao<Gift>();
     @Override
     public int addObj(Object... objects) {
@@ -31,5 +31,11 @@ public class giftService implements BasicOperate {
     @Override
     public List<Gift> findObj(Object... objects) {
         return d.loadAllObjects(Gift.class,SqlSmt.FINDALL_GIFT,objects);
+    }
+    public List<Gift> findObjByMultiCondition(String id) {
+        StringBuilder sb = new StringBuilder(SqlSmt.FINDALL_GIFT);
+        sb.append(" and giftName like ?");
+        id = "%"+id+"%";
+        return d.loadAllObjects(Gift.class,sb.toString(),id);
     }
 }

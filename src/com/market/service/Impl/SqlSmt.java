@@ -1,18 +1,8 @@
 package com.market.service.Impl;
 
 public class SqlSmt {
-    //firstGood增删改查语句
-    public static final String INSERT_FIRSTGOOD="insert into firstGood(goodName,adoptPrice,marketPrice,shopPrice,minNo,adopt,creatTime,updateTime,operator,typeId,productId) values(?,?,?,?,?,?,?,?,?,?,?) ";
-    public static final String UPDATE_FIRSTGOOD="update firstGood set goodName=?,typeId=?,marketPrice=?,shopPrice=?,minNo=?,adopt=?,updateTime=? where goodId=?";
-    public static final String DELETE_FIRSTGOOD="delete from firstGood where goodId=?";
-    public static final String FINDID_FIRSTGOOD="select * from firstGood where goodId=?";
-    public static final String FINDALL_FIRSTGOOD="select * from firstGood where 1=1";
-    //secondGood增删改查语句
-    public static final String INSERT_SECONDGOOD="insert into secondGood(goodName,adoptPrice,marketPrice,shopPrice,minNo,adopt,creatTime,updateTime,operator,typeId,brandId,goodModel,goodColor) values(?,?,?,?,?,?,?,?,?,?,?) ";
-    public static final String UPDATE_SECONDGOOD="update secondGood set goodName=?,typeId=?,marketPrice=?,shopPrice=?,minNo=?,adopt=?,updateTime=? where goodId=?";
-    public static final String DELETE_SECONDGOOD="delete from secondGood where goodId=?";
-    public static final String FINDID_SECONDGOOD="select * from secondGood where goodId=?";
-    public static final String FINDALL_SECONDGOOD="select * from secondGood where 1=1";
+
+
     //brand增删改查语句
     public static final String INSERT_BRAND="insert into brand(brandName,brandWeb,brandDescribe)values(?,?,?)";
     public static final String UPDATE_BRAND="update brand set brandName=?,brandWeb=?,brandDescribe=? where brandId=?";
@@ -20,14 +10,14 @@ public class SqlSmt {
     public static final String FINDID_BRAND="select * from brand where brandId=?";
     public static final String FINDALL_BRAND="select * from brand where 1=1";
     //type增删改查语句
-    public static final String INSERT_TYPE="insert into type(typeName,typeState,typeDescribe) values(?,1,?)";
+    public static final String INSERT_TYPE="insert into type(typeName,typeDescribe) values(?,?)";
     public static final String UPDATE_TYPE="update type set typeName=?,typeDescribe=? where typeId=?";
     public static final String DELETE_TYPE="delete from type where typeId=?";
     public static final String FINDID_TYPE="select * from type where typeId=?";
     public static final String FINDALL_TYPE="select * from type where 1=1";
     //gift增删改查语句
-    public static final String INSERT_GIFT="insert into gift(giftName,typeId,giftModel,giftPrice,adoptPrice,adoptDepartment,minNo,giftColor,brandId) values(?,?,?,?,?,?,?,?,?)";
-    public static final String UPDATE_GIFT="update gift set giftName=?,typeId=?,giftModel=?,giftPrice=?,adoptPrice=?,adoptDepartment=?,minNo=?,giftColor=?,brandId=? where giftId=?";
+    public static final String INSERT_GIFT="insert into gift(giftName,giftModel,giftPrice,giftColor,adoptPrice,adoptDepartment,giftNumber,typeName,brandName) values(?,?,?,?,?,?,?,?,?)";
+    public static final String UPDATE_GIFT="update gift set giftName=?,giftPrice=?,giftNumber=? where giftId=?";
     public static final String DELETE_GIFT="delete from gift where giftId=?";
     public static final String FINDID_GIFT="select * from gift where giftId=?";
     public static final String FINDALL_GIFT="select * from gift where 1=1";
@@ -60,5 +50,30 @@ public class SqlSmt {
     //获取某表的某一列不重复值
     public static final String GET_COLUMN = "select distinct ? from ?";
 
+    //good表增删改
+    public static final String INSERT_GOOD = "insert into good(goodName,goodType,goodBrand,goodModel,goodColor,goodRank,goodAdoptPrice,goodMarketPrice,goodShopPrice,goodNumber,creatTime,operator) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+    public static final String UPDATE_GOOD="update good set goodName=?,goodMarketPrice=?,goodShopPrice=?,goodNumber=?,updateTime=?,operator=? where goodId=?";
+    public static final String DELETE_GOOD="delete from good where goodId=?";
+    public static final String FINDID_GOOD="select * from good where goodId=?";
+    public static final String FINDALL_GOOD="select * from good where 1=1";
+    //activity表操作
+    public static final String INSERT_ACTIVITY = "insert into activity(activityName,beginTime,endTime,goodId,goodName,goodPrice,activityNumber,priceRange,activityPrice,reason,remarks) values(?,?,?,?,?,?,?,?,?,?,?)";
+    public static final String DELETE_ACTIVITY = "delete from activity where activityId=?";
+    public static final String UPDATE_ACTIVITY = "update activity set activityName=?,beginTime=?,endTime=?,priceRange=?,reason=?,remarks=? where activityId=?";
+    public static final String FINDID_ACTIVITY = "select * from activity where activityId=?";
+    public static final String FINDALL_ACTIVITY = "select * from activity where 1=1";
+
+    //    //firstGood增删改查语句
+//    public static final String INSERT_FIRSTGOOD="insert into firstGood(goodName,adoptPrice,marketPrice,shopPrice,minNo,adopt,creatTime,updateTime,operator,typeId,productId) values(?,?,?,?,?,?,?,?,?,?,?) ";
+//    public static final String UPDATE_FIRSTGOOD="update firstGood set goodName=?,typeId=?,marketPrice=?,shopPrice=?,minNo=?,adopt=?,updateTime=? where goodId=?";
+//    public static final String DELETE_FIRSTGOOD="delete from firstGood where goodId=?";
+//    public static final String FINDID_FIRSTGOOD="select * from firstGood where goodId=?";
+//    public static final String FINDALL_FIRSTGOOD="select * from firstGood where 1=1";
+//    //secondGood增删改查语句
+//    public static final String INSERT_SECONDGOOD="insert into secondGood(goodName,adoptPrice,marketPrice,shopPrice,minNo,adopt,creatTime,updateTime,operator,typeId,brandId,goodModel,goodColor) values(?,?,?,?,?,?,?,?,?,?,?) ";
+//    public static final String UPDATE_SECONDGOOD="update secondGood set goodName=?,typeId=?,marketPrice=?,shopPrice=?,minNo=?,adopt=?,updateTime=? where goodId=?";
+//    public static final String DELETE_SECONDGOOD="delete from secondGood where goodId=?";
+//    public static final String FINDID_SECONDGOOD="select * from secondGood where goodId=?";
+//    public static final String FINDALL_SECONDGOOD="select * from secondGood where 1=1";
 
 }

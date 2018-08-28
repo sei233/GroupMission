@@ -85,6 +85,10 @@
                 maxView: 1,
                 forceParse: 0
             });
+
+            $('#submit').click(function () {
+                return window.confirm("您确定删除吗?");
+            })
         });
     </script>
 
@@ -174,7 +178,7 @@
         <br>
         <div>
             <div class="form-group">
-                <a class="btn btn-info box_relative" href="${pageContext.request.contextPath }/app_out?type=add">添加</a>
+                <a class="btn btn-info box_relative" href="${pageContext.request.contextPath }/app_out?type=addRe">添加</a>
                 <a class="btn btn-info box_relative"
                    href="${pageContext.request.contextPath }/app_out?type=export">导出</a>
                 <input type="submit" class="btn btn-info" value="查询">
@@ -186,7 +190,9 @@
 
     <form action="${pageContext.request.contextPath}/app_out?type=delete" method="post">
         <div class="form-group">
-            <input type="submit" class="btn btn-danger" value="删除">
+            <input type="submit" id="submit" class="btn btn-danger" value="删除">
+            <a class="btn btn-info box_relative"
+               href="${pageContext.request.contextPath }/app_out?type=refresh">刷新</a>
         </div>
 
         <div class="form-group">

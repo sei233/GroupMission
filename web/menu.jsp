@@ -53,14 +53,6 @@
                 <a href="${pageContext.request.contextPath}/activityAPV_out"
                    target=mainFrame>－ 促销活动审批</a>
             </li>
-            <li>
-                <a href="${pageContext.request.contextPath}/priceAPC_out"
-                   target=mainFrame>－ 价格调整申请</a>
-            </li>
-            <li>
-                <a href="${pageContext.request.contextPath}/prictAPV_out"
-                   target=mainFrame>－ 价格调整审批</a>
-            </li>
         </ul>
 
         <a class="btn btn-primary btn-block nav nav-header collapsed" data-toggle="collapse"

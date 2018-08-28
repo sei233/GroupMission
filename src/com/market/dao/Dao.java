@@ -93,7 +93,6 @@ public class Dao<T> {
      */
     public T loadObjextById(Class<T> cls,String sql,Object... objects){
         Connection connection = getConnection();
-
         try {
             PreparedStatement smt = connection.prepareStatement(sql);
             if (objects != null && objects.length != 0) {

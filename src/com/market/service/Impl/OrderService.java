@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 public class OrderService {
 
-    public static void main(String[] args){
-        Dao<Order> dao = new Dao<>();
-        ArrayList<Order> list = dao.loadAllObjects(Order.class, "select * from orders");
-        System.out.println(list);
-    }
+//    public static void main(String[] args){
+//        Dao<Order> dao = new Dao<>();
+//        ArrayList<Order> list = dao.loadAllObjects(Order.class, "select * from orders");
+//        System.out.println(list);
+//    }
 }

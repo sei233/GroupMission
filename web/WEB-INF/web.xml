@@ -20,6 +20,22 @@
         <url-pattern>/good_out</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>Gift</servlet-name>
+        <servlet-class>com.market.controller.GiftController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Gift</servlet-name>
+        <url-pattern>/gift_out</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Activity</servlet-name>
+        <servlet-class>com.market.controller.activityAPCController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Activity</servlet-name>
+        <url-pattern>/activityAPC_out</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>Brand</servlet-name>
         <servlet-class>com.market.controller.BrandController</servlet-class>
     </servlet>

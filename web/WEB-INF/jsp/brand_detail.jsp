@@ -39,7 +39,8 @@
             <br>
             <div class="form-group">
                 <span>品牌描述&nbsp;</span>
-                <input  name="brandDescribe" class="form-control"  value="${brand.brandDescribe}" readonly="readonly"></input>
+                <%--<input  name="brandDescribe" class="form-control"  value="${brand.brandDescribe}" readonly="readonly"></input>--%>
+                <textarea name="brandDescribe" class="form-control" readonly="readonly">${brand.brandDescribe}</textarea>
             </div>
             <br>
             <br>
@@ -48,13 +49,10 @@
             <%--<a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/brand_out?type=addToBrand">添加</a>--%>
             <a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/brand_out">返回</a>
         </div>
-
-
     </form>
 </div>
 </body>
 <script type="text/javascript">
-
 
 </script>
 </html>

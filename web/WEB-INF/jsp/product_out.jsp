@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--
   Created by IntelliJ IDEA.
   User: 石乾
@@ -6,21 +7,21 @@
   Time: 11:06
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>$Title$</title>
 
     <style type="text/css">
-        .pageTest {
-            width: 1000px;
-            height: 5px;
-            margin-top: 5px;
-        }
-        .activP {
-            background-color: #367fa9 !important;
-            color: #fff !important;
-        }
+        /*.pageTest {*/
+            /*width: 1000px;*/
+            /*height: 5px;*/
+            /*margin-top: 5px;*/
+        /*}*/
+        /*.activP {*/
+            /*background-color: #367fa9 !important;*/
+            /*color: #fff !important;*/
+        /*}*/
         td {
             text-align: center;
         }
@@ -77,7 +78,8 @@
                         <option value="${brand}">${brand}</option>
                     </c:forEach>
                 </select>
-            </div><div class="form-group">
+            </div>
+            <div class="form-group">
             <label>类型:</label>
             <select class="btn btn-default" name="pro_type">
                 <option value="">请选择</option>
@@ -99,6 +101,7 @@
                     <th>产品分类</th>
                     <th>产品型号</th>
                     <th>产品颜色</th>
+                    <th>操作</th>
                 </tr>
                 <c:forEach items="${product_list}" var="product" varStatus="s">
                     <tr class="active">
@@ -108,29 +111,37 @@
                         <td>${product.productType}</td>
                         <td>${product.productModel}</td>
                         <td>${product.productColor}</td>
+                        <td><a class="btn btn-primary"
+                               href="${pageContext.request.contextPath }/good_out?type=choosefg&&id=${product.productId}">选择</a>
+                        </td>
                     </tr>
                 </c:forEach>
-                <tr>
-                    <td colspan="11">
-                        <!--必须要的div-->
-                        <div class="pageTest"></div>
-                    </td>
-                </tr>
+                <%--<tr>--%>
+                    <%--<td colspan="11">--%>
+                        <%--<!--必须要的div-->--%>
+                        <%--<div class="pageTest"></div>--%>
+                    <%--</td>--%>
+                <%--</tr>--%>
             </table>
         </div>
     </form>
 </div>
 </body>
 <script type="text/javascript">
-    $(function () {
-        $('.pageTest').page({
-            leng: 10,//分页总数
-            activeClass: 'activP', //active 类样式定义
-            clickBack: function (page) {
-                window.location.reload();
-            }
-        });
-    });
+    // $(function () {
+    //     $('.pageTest').page({
+    //         leng: 10,//分页总数
+    //         activeClass: 'activP', //active 类样式定义
+    //         clickBack: function (page) {
+    //             window.location.reload();
+    //         }
+    //     });
+    // });
+    var msg = "${msg}";
+    if (msg=='kk'){
+        alert("空空如也");
+        window.location.replace("${pageContext.request.contextPath }/type_out");
+    }
     /*function check(form) {
         // alert("来了");
         if (form.id.value==null || form.id.value==""){

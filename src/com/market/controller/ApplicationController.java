@@ -1,8 +1,10 @@
 package com.market.controller;
 
 import com.market.bean.po.Application;
+import com.market.bean.po.Product;
 import com.market.bean.vo.ApplicationVo;
 import com.market.service.Impl.ApplicationService;
+import com.market.service.Impl.ProductService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,6 +20,7 @@ public class ApplicationController extends HttpServlet {
     private ApplicationService applicationService = new ApplicationService();
     private List<Application> applications = new ArrayList<>();
     private List<ApplicationVo> appVoList = new ArrayList<>();
+    private ProductService productService = new ProductService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,8 +33,15 @@ public class ApplicationController extends HttpServlet {
         String type = req.getParameter("type");
         String page = req.getParameter("page");
 
-        if ("add".equals(type)) {
-
+        if ("addRe".equals(type)) {
+            addRe(req,resp);
+        } else if ("json".equals(type)) {
+            String ids = req.getParameter("IDs");//查询
+            System.out.println(ids);
+            //拼接json数据
+            String jsonStr = "{\"name\":\""+"shiqian"+"\",\"age\":\"20\"}";
+            //将数据写入流中
+            resp.getWriter().write(jsonStr);
         } else if ("query".equals(type)) {                                                                     //查询
             query(req, resp);
         } else if ("delete".equals(type)) {                                                                     //删除
@@ -44,6 +54,17 @@ public class ApplicationController extends HttpServlet {
             //转发
             dispatcher(req, resp);
         }
+    }
+
+    private void addRe(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //获取所有的商品信息,目的是为了把他们显示到模态框中，在这个地方先用product来代替，后期看情况更改
+        ArrayList<Product> products = productService.showAllPro();
+
+        //把所有商品封装到request域里
+        req.setAttribute("products",products);
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/app_add.jsp");
+        dispatcher.forward(req, resp);
     }
 
     private void delete(HttpServletRequest req, HttpServletResponse resp,String page) throws ServletException, IOException {

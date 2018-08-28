@@ -46,4 +46,14 @@ public class BrandService implements BasicOperate {
         id = "%"+id+"%";
         return d.loadAllObjects(Brand.class,sb.toString(),id);
     }
+    public ArrayList<String> getBrandList(){
+        ArrayList<Brand> brands = (ArrayList<Brand>)findObj();
+        ArrayList<String> brand_list = new ArrayList<>();
+        for (Brand brand:brands){
+            if (!brand_list.contains(brand.getBrandName())){
+                brand_list.add(brand.getBrandName());
+            }
+        }
+        return brand_list;
+    }
 }
