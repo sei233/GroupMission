@@ -18,41 +18,33 @@
 </head>
 <body>
 <div class="container">
-    <form action="" method="post" class="form-inline">
+    <form action="${pageContext.request.contextPath }/type_out?type=addToType" method="post" class="form-inline">
         <div>
             <%--<a class="btn btn-primary box_relative" href="${pageContext.request.contextPath }/brand_detail?type=export">导入</a>--%>
             <%--<c:out value="${brand}"></c:out>--%>
-                <div class="form-group">
-                    <span>品牌编号&nbsp;</span><input type="text" name="brandName" class="form-control" value="${brand.brandId}" readonly="readonly">
-                </div>
             <br>
             <br>
             <div class="form-group">
-                <span>品牌名称&nbsp;</span><input type="text" name="brandName" class="form-control" value="${brand.brandName}" readonly="readonly">
+                <span>类型名称&nbsp;</span><input type="text" name="typeName" class="form-control" >
             </div>
             <br>
             <br>
             <div class="form-group">
-                <span >品牌网址&nbsp;</span><input type="text" name="brandWeb" class="form-control" value="${brand.brandWeb}" readonly="readonly">
+                <span>类型描述&nbsp;</span>
+                <textarea  name="typeDescribe" class="form-control" style="width: 200px;height: 150px"></textarea>
             </div>
             <br>
             <br>
-            <div class="form-group">
-                <span>品牌描述&nbsp;</span>
-                <%--<input  name="brandDescribe" class="form-control"  value="${brand.brandDescribe}" readonly="readonly"></input>--%>
-                <textarea name="brandDescribe" class="form-control" readonly="readonly">${brand.brandDescribe}</textarea>
-            </div>
-            <br>
-            <br>
-            <%--<input class="btn btn-warning" type="submit" value="确定">--%>
-            <%--<input class="btn btn-warning" type="reset" value="重置">--%>
+            <input class="btn btn-warning" type="submit" value="添加">
+            <input class="btn btn-warning" type="reset" value="重置">
             <%--<a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/brand_out?type=addToBrand">添加</a>--%>
-            <a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/brand_out">返回</a>
+            <a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/type_out">返回</a>
         </div>
     </form>
 </div>
 </body>
 <script type="text/javascript">
+
 
 </script>
 </html>

@@ -97,8 +97,14 @@ public class BrandController extends HttpServlet {
                     System.out.println("当前输入不是数字，不能查找编号");
                     e.printStackTrace();
                 }finally {
-                    request.setAttribute("brand_list", brand_list);
-                    request.getRequestDispatcher("/WEB-INF/jsp/brand_out.jsp").forward(request, response);
+//                    System.out.println(brand_list.size());
+                    if (brand_list.size()>0) {
+                        request.setAttribute("brand_list", brand_list);
+                        request.getRequestDispatcher("/WEB-INF/jsp/brand_out.jsp").forward(request, response);
+                    }else {
+                        request.setAttribute("msg", "kk");
+                        request.getRequestDispatcher("/WEB-INF/jsp/brand_out.jsp").forward(request, response);
+                    }
                 }
                 break;
             }

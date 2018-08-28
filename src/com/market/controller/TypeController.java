@@ -2,7 +2,6 @@ package com.market.controller;
 
 import com.market.bean.po.Type;
 import com.market.service.Impl.TypeService;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,6 +21,41 @@ public class TypeController extends HttpServlet {
         }
         switch (type){
             case "add":{
+                request.getRequestDispatcher("/WEB-INF/jsp/type_add.jsp").forward(request,response);
+                break;
+            }
+            case "addToType":{
+                String typeName = request.getParameter("typeName");
+                String typeDescribe = request.getParameter("typeDescribe");
+                int row = ts.addObj(typeName,typeDescribe);
+                if (row==1){
+                    request.setAttribute("msg","addsucc");
+                    request.getRequestDispatcher("/WEB-INF/jsp/type_out.jsp").forward(request,response);
+                }else {
+                    request.setAttribute("msg","addfail");
+                    request.getRequestDispatcher("/WEB-INF/jsp/type_out.jsp").forward(request,response);
+                }
+            }
+            case "find":{
+                String id =request.getParameter("id");
+                ArrayList<Type> type_list = (ArrayList<Type> )ts.findObjByMultiCondition(id);
+                try{
+                    Type type11 = ts.findObjById(Integer.parseInt(id));
+                    if (type11!=null)
+                        type_list.add(type11);
+                }catch (NumberFormatException e){
+                    System.out.println("当前输入不是数字，不能查找编号");
+                    e.printStackTrace();
+                }finally {
+//                    System.out.println(type_list.size());
+                    if (type_list.size()>0) {
+                        request.setAttribute("type_list", type_list);
+                        request.getRequestDispatcher("/WEB-INF/jsp/type_out.jsp").forward(request, response);
+                    }else {
+                        request.setAttribute("msg", "kk");
+                        request.getRequestDispatcher("/WEB-INF/jsp/type_out.jsp").forward(request, response);
+                    }
+                }
                 break;
             }
             case "delete":{

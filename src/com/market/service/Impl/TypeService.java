@@ -4,6 +4,7 @@ import com.market.bean.po.Type;
 import com.market.dao.Dao;
 import com.market.service.BasicOperate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TypeService  implements BasicOperate {
@@ -31,5 +32,22 @@ public class TypeService  implements BasicOperate {
     @Override
     public List<Type> findObj(Object... objects) {
         return d.loadAllObjects(Type.class,SqlSmt.FINDALL_TYPE,objects);
+    }
+
+    public Object findObjByMultiCondition(String id) {
+        StringBuilder sb = new StringBuilder(SqlSmt.FINDALL_TYPE);
+        sb.append(" and typeName like ?");
+        id = "%"+id+"%";
+        return d.loadAllObjects(Type.class,sb.toString(),id);
+    }
+    public ArrayList<String> getTypeList(){
+        ArrayList<Type> types = (ArrayList<Type>)findObj();
+        ArrayList<String> type_list = new ArrayList<>();
+        for (Type t:types){
+            if (!type_list.contains(t.getTypeName())){
+                type_list.add(t.getTypeName());
+            }
+        }
+        return type_list;
     }
 }

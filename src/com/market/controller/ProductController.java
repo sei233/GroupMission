@@ -27,7 +27,6 @@ public class ProductController extends HttpServlet {
         request.setAttribute("brand_list",brand_list);
         request.setAttribute("type_list",type_list);
         request.setAttribute("model_list",model_list);
-
         if (type==null){
             type="";
         }
@@ -47,8 +46,14 @@ public class ProductController extends HttpServlet {
                         System.out.println("当前输入不是数字，不能查找编号");
                         e.printStackTrace();
                     } finally {
-                        request.setAttribute("product_list", product_list);
-                        request.getRequestDispatcher("/WEB-INF/jsp/product_out.jsp").forward(request, response);
+                        System.out.println(product_list.size());
+                        if (product_list.size()>0) {
+                            request.setAttribute("product_list", product_list);
+                            request.getRequestDispatcher("/WEB-INF/jsp/product_out.jsp").forward(request, response);
+                        }else {
+                            request.setAttribute("msg", "kk");
+                            request.getRequestDispatcher("/WEB-INF/jsp/product_out.jsp").forward(request, response);
+                        }
                     }
                 }else {
                     String color = request.getParameter("pro_color");
@@ -56,15 +61,22 @@ public class ProductController extends HttpServlet {
                     String model = request.getParameter("pro_model");
                     String type1 = request.getParameter("pro_type");
                     product_list = (ArrayList<Product>)ps.findObjByMultiCondition(color,model,brand,type1);//按顺序传入 color model brand type
-                    request.setAttribute("product_list", product_list);
-                    request.getRequestDispatcher("/WEB-INF/jsp/product_out.jsp").forward(request, response);
+                    System.out.println(product_list.size());
+                    if (product_list.size()>0) {
+                        request.setAttribute("product_list", product_list);
+                        request.getRequestDispatcher("/WEB-INF/jsp/product_out.jsp").forward(request, response);
+                    }else {
+                        request.setAttribute("msg", "kk");
+                        request.getRequestDispatcher("/WEB-INF/jsp/product_out.jsp").forward(request, response);
+                    }
                 }
                 break;
             }
             default:{
 //                System.out.println("1");
-                 product_list = new ArrayList<Product>();
-                 product_list = ps.showAllPro();
+
+                product_list = ps.showAllPro();
+//                 product_list = ps.showAllPro();
 //                for (Product p:product_list) System.out.println(p.getProductName());
 //                System.out.println("2");
                 request.setAttribute("product_list",product_list);

@@ -1,9 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
-  User: 石乾
-  Date: 2018/7/18
-  Time: 11:06
+  User: spades
+  Date: 2018/8/24
+  Time: 09:00
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,15 +12,15 @@
     <title>$Title$</title>
 
     <style type="text/css">
-        .pageTest {
-            width: 1000px;
-            height: 5px;
-            margin-top: 5px;
-        }
-        .activP {
-            background-color: #367fa9 !important;
-            color: #fff !important;
-        }
+        /*.pageTest {*/
+            /*width: 1000px;*/
+            /*height: 5px;*/
+            /*margin-top: 5px;*/
+        /*}*/
+        /*.activP {*/
+            /*background-color: #367fa9 !important;*/
+            /*color: #fff !important;*/
+        /*}*/
         td {
             text-align: center;
         }
@@ -77,27 +77,27 @@
                         </td>
                     </tr>
                 </c:forEach>
-                <tr>
-                    <td colspan="11">
-                        <!--必须要的div-->
-                        <div class="pageTest"></div>
-                    </td>
-                </tr>
+                <%--<tr>--%>
+                    <%--<td colspan="11">--%>
+                        <%--<!--必须要的div-->--%>
+                        <%--<div class="pageTest"></div>--%>
+                    <%--</td>--%>
+                <%--</tr>--%>
             </table>
         </div>
     </form>
 </div>
 </body>
 <script type="text/javascript">
-    $(function () {
-        $('.pageTest').page({
-            leng: 10,//分页总数
-            activeClass: 'activP', //active 类样式定义
-            clickBack: function (page) {
-                window.location.reload();
-            }
-        });
-    });
+    // $(function () {
+    //     $('.pageTest').page({
+    //         leng: 10,//分页总数
+    //         activeClass: 'activP', //active 类样式定义
+    //         clickBack: function (page) {
+    //             window.location.reload();
+    //         }
+    //     });
+    // });
     function check(form) {
         // alert("来了");
         if (form.id.value==null || form.id.value==""){
@@ -129,6 +129,10 @@
     }
     if (msg=='updatefail'){
         alert("修改失败");
+        window.location.replace("${pageContext.request.contextPath }/type_out");
+    }
+    if (msg=='kk'){
+        alert("空空如也");
         window.location.replace("${pageContext.request.contextPath }/type_out");
     }
 </script>
