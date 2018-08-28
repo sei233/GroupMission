@@ -104,7 +104,7 @@
     function check(form) {
         // alert("来了");
         if (form.id.value==null || form.id.value==""){
-            alert("请输入您要查找的品牌编号或名称！");
+            alert("请输入您要查找的角色编号或名称！");
             return false;
         }
         return true;

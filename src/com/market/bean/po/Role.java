@@ -3,14 +3,14 @@ public class Role {
     private Integer roleId;
     private String roleName;
     private String roleDesc;
-    private Integer roleStatus;//0有效，1无效
+    private String roleStatus;
     private String roleDept;
 
 
     public Role() {
     }
 
-    public Role(Integer roleId, String roleName, String roleDesc, Integer roleStatus, String roleDept) {
+    public Role(Integer roleId, String roleName, String roleDesc, String roleStatus, String roleDept) {
         this.roleId = roleId;
         this.roleName = roleName;
         this.roleDesc = roleDesc;
@@ -45,16 +45,12 @@ public class Role {
         this.roleDesc = roleDesc;
     }
 
-    public Integer getRoleStatus() {
+    public String getRoleStatus() {
         return roleStatus;
     }
 
-    public void setRoleStatus(Integer roleStatus) {
-        if(getRoleStatus()==0){
-            this.roleStatus= Integer.valueOf("有效");
-        }else if(getRoleStatus()==1){
-            this.roleStatus= Integer.valueOf("无效");
-        }
+    public void setRoleStatus(String roleStatus) {
+        this.roleStatus=roleStatus;
     }
 
     public String getRoleDept() {

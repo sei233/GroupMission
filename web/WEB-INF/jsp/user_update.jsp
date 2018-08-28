@@ -38,22 +38,35 @@
                 <br>
                 <br>
                 <div class="form-group">
-                    <span>用户性别&nbsp;</span><input type="text" name="userSex" class="form-control" value="${user.userSex}">
-                </div>
-                <br>
-                <br>
-                <div class="form-group">
                     <span>用户部门&nbsp;</span><input type="text" name="userDept" class="form-control" value="${user.userDept}">
                 </div>
                 <br>
                 <br>
                 <div class="form-group">
-                    <span>用户状态&nbsp;</span><input type="text" name="userStatus" class="form-control" value="${user.userStatus}">
+                    <span>用户性别&nbsp;</span><select class="btn btn-default" name="userSex">
+                    <option value="">请选择</option>
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
                 </div>
                 <br>
                 <br>
                 <div class="form-group">
-                    <span>用户职位&nbsp;</span><input type="text" name="userTitle" class="form-control" value="${user.userTitle}">
+                    <span>用户状态&nbsp;</span><select class="btn btn-default" name="userStatus">
+                    <option value="">请选择</option>
+                    <option value="有效">有效</option>
+                    <option value="无效">无效</option>
+                </select>
+                </div>
+                <br>
+                <br>
+                <div class="form-group">
+                    <span>用户职位&nbsp;</span><select class="btn btn-default" name="userTitle">
+                    <option value="">请选择</option>
+                    <option value="员工">员工</option>
+                    <option value="经理">经理</option>
+                    <option value="处长">处长</option>
+                </select>
                 </div>
                 <br>
                 <br>

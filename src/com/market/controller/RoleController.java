@@ -36,7 +36,7 @@ public class RoleController extends HttpServlet {
             case "addToRole": {
                 String roleName = request.getParameter("roleName");
                 String roleDesc = request.getParameter("roleDesc");
-                Integer roleStatus = Integer.valueOf(request.getParameter("roleStatus"));
+                String roleStatus = request.getParameter("roleStatus");
                 String roleDept = request.getParameter("roleDept");
 
                 int row = rs.addObj(roleName, roleDesc, roleStatus, roleDept);
@@ -75,7 +75,7 @@ public class RoleController extends HttpServlet {
                 String id = request.getParameter("roleId");
                 String name = request.getParameter("roleName");
                 String desc = request.getParameter("roleDesc");
-                Integer status = Integer.valueOf(request.getParameter("roleStatus"));
+                String status = request.getParameter("roleStatus");
                 String dept = request.getParameter("roleDept");
 
                 int row = rs.changeObj(name, desc, status, dept, id);

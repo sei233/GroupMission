@@ -36,4 +36,10 @@ public class UserService implements BasicOperate {
     public List<User> findObj(Object... objects) {
         return d.loadAllObjects(User.class,SqlSmt.FINDALL_USER,objects);
     }
-}
+
+    public List<User> findObjByMultiCondition(String id) {
+        StringBuilder sb = new StringBuilder(SqlSmt.FINDALL_USER);
+        sb.append(" and userAccount like ?");
+        id = "%" + id + "%";
+        return d.loadAllObjects(User.class, sb.toString(), id);
+    }}
