@@ -1,11 +1,12 @@
 package com.market.controller;
 
 
+
 import com.market.bean.po.Role;
 import com.market.dao.Dao;
+
 import com.market.service.Impl.RoleService;
 import com.market.service.Impl.SqlSmt;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+
 
 @WebServlet(name = "RoleController",urlPatterns = "/RoleController")
 public class RoleController extends HttpServlet {
@@ -26,7 +28,8 @@ public class RoleController extends HttpServlet {
         }
         switch (type) {
             case "add": {
-//                request.setAttribute("role_list",role_list);
+
+               // request.setAttribute("role_list", role_List);
                 request.getRequestDispatcher("/WEB-INF/jsp/role_add.jsp").forward(request, response);
                 break;
             }
@@ -34,7 +37,7 @@ public class RoleController extends HttpServlet {
                 String roleName = request.getParameter("roleName");
                 String roleDesc = request.getParameter("roleDesc");
                 Integer roleStatus = Integer.valueOf(request.getParameter("roleStatus"));
-                int roleDept = Integer.parseInt(request.getParameter("roleDept"));
+                String roleDept = request.getParameter("roleDept");
 
                 int row = rs.addObj(roleName, roleDesc, roleStatus, roleDept);
                 if (row == 1) {
@@ -73,7 +76,7 @@ public class RoleController extends HttpServlet {
                 String name = request.getParameter("roleName");
                 String desc = request.getParameter("roleDesc");
                 Integer status = Integer.valueOf(request.getParameter("roleStatus"));
-                int dept = Integer.parseInt(request.getParameter("roleDept"));
+                String dept = request.getParameter("roleDept");
 
                 int row = rs.changeObj(name, desc, status, dept, id);
                 if (row == 1) {
@@ -86,26 +89,18 @@ public class RoleController extends HttpServlet {
                 break;
             }
             case "find": {
-                String id = request.getParameter("id");
-                if (id != null && id != "") {
-                    StringBuilder sb = new StringBuilder(SqlSmt.FINDALL_BRAND);
-                    sb.append(" and roleName like \'%");
-                    sb.append(id);
-                    sb.append("%\'");
-                    System.out.println(sb.toString());
-                    ArrayList<Role> role_list = new Dao<Role>().loadAllObjects(Role.class, sb.toString());
-                    try {
-                        Role role = rs.findObjById(Integer.parseInt(id));
-                        if (role != null)
-                            role_list.add(role);
-                    } catch (NumberFormatException e) {
-                        e.printStackTrace();
-                    } finally {
-                        request.setAttribute("role_list", role_list);
-                        request.getRequestDispatcher("/WEB-INF/jsp/role_out.jsp").forward(request, response);
-                    }
-
-
+                String id =request.getParameter("id");
+                ArrayList<Role> role_list = (ArrayList<Role> )rs.findObjByMultiCondition(id);
+                try{
+                    Role role = rs.findObjById(Integer.parseInt(id));
+                    if (role!=null)
+                        role_list.add(role);
+                }catch (NumberFormatException e){
+                    System.out.println("当前输入不是数字，不能查找编号");
+                    e.printStackTrace();
+                }finally {
+                    request.setAttribute("role_list", role_list);
+                    request.getRequestDispatcher("/WEB-INF/jsp/role_out.jsp").forward(request, response);
                 }
                 break;
             }
@@ -117,9 +112,6 @@ public class RoleController extends HttpServlet {
             }
         }
     }
-
-
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
     }

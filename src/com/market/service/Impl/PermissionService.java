@@ -36,4 +36,10 @@ public class PermissionService implements BasicOperate {
     public List<Permission> findObj(Object... objects) {
         return d.loadAllObjects(Permission.class,SqlSmt.FINDALL_PERMISSION,objects);
     }
+    public List<Permission> findObjByMultiCondition(String id) {
+        StringBuilder sb = new StringBuilder(SqlSmt.FINDALL_PERMISSION);
+        sb.append(" and permissionName like ?");
+        id = "%"+id+"%";
+        return d.loadAllObjects(Permission.class,sb.toString(),id);
+    }
 }

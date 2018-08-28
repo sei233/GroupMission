@@ -6,10 +6,9 @@ public class User {
     private Integer userId;
     private String userAccount;
     private String userName;
-    private String userPassword;
     private Integer userSex;//0男，1女
     private Integer userStatus;//0有效，1无效
-    private String userTitle;
+    private Integer userTitle;
     private String userPhone;
     private String userEmail;
     private String userRemark1;
@@ -25,11 +24,10 @@ public class User {
     public User() {
     }
 
-    public User(Integer userId, String userAccount, String userName, String userPassword, Integer userSex, Integer userStatus, String userTitle, String userPhone, String userEmail, String userRemark1, String userRemark2, String userRemark3, String userRemark4, String userRemark5, int userDept, int userRole, Dept dept, Role role) {
+    public User(Integer userId, String userAccount, String userName, Integer userSex, Integer userStatus, Integer userTitle, String userPhone, String userEmail, String userRemark1, String userRemark2, String userRemark3, String userRemark4, String userRemark5, int userDept, int userRole, Dept dept, Role role) {
         this.userId=userId;
         this.userAccount=userAccount;
         this.userName=userName;
-        this.userPassword=userPassword;
         this.userSex=userSex;
         this.userStatus=userStatus;
         this.userTitle=userTitle;
@@ -49,14 +47,10 @@ public class User {
     public Integer getUserId() { return userId; }
     public void setUserId(Integer userId) { this.userId = userId; }
 
-    public String getUserAccount() { return userAccount; }
-    public void setUserAccount(String userAccount) { this.userAccount = userAccount; }
+
 
     public String getUserName() { return userName; }
     public void setUserName(String userName) { this.userName = userName; }
-
-    public String getUserPassword() { return userPassword; }
-    public void setUserPassword(String userPassword) { this.userPassword = userPassword; }
 
     public Integer getUserSex() { return userSex; }
     public void setUserSex(Integer userSex) { this.userSex = userSex; }
@@ -64,8 +58,8 @@ public class User {
     public Integer getUserStatus() { return userStatus; }
     public void setUserStatus(Integer userStatus) { this.userStatus = userStatus; }
 
-    public String getUserTitle() { return userTitle; }
-    public void setUserTitle(String userTitle) { this.userTitle = userTitle; }
+    public Integer getUserTitle() { return userTitle; }
+    public void setUserTitle(Integer userTitle) { this.userTitle = userTitle; }
 
     public String getUserPhone() { return userPhone;}
     public void setUserPhone(String userPhone) { this.userPhone = userPhone; }
@@ -109,5 +103,13 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(String userAccount) {
+        this.userAccount = userAccount;
     }
 }

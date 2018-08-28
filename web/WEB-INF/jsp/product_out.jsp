@@ -33,9 +33,9 @@
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <%--<script src="/js/jquery.min.js"></script>--%>
-    <script type="text/javascript" src="/js/page.js"></script>
-    <link rel="stylesheet" href="/css/page.css">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script type="text/javascript" src="js/page.js"></script>
+    <link rel="stylesheet" href="css/page.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 
 
 </head>

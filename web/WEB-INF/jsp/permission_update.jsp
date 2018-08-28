@@ -12,8 +12,8 @@
     <title>Title</title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <%--<script src="/js/jquery.min.js"></script>--%>
-    <script type="text/javascript" src="js/page.js"></script>
-    <link rel="stylesheet" href="css/page.css">
+    <script type="text/javascript" src="/js/page.js"></script>
+    <link rel="stylesheet" href="/css/page.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
@@ -34,7 +34,7 @@
             <br>
             <div class="form-group">
                 <span>权限描述&nbsp;</span>
-                <input  name="permissionDesc" class="form-control"  value="${permission.permissionDesc}"></input>
+                <input  name="permissionDesc" class="form-control"  value="${permission.permissionDesc}">
             </div>
             <br>
             <br>
