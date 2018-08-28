@@ -21,7 +21,6 @@
             <div class="form-group">
                 <a class="btn btn-primary"
                    href="${pageContext.request.contextPath }/good_out?type=selectfg">选择产品</a>
-                <%--<button class="btn btn-sm" href="${pageContext.request.contextPath}/good_out?type=selectfg">选择产品</button>--%>
             </div>
             <br>
             <br>

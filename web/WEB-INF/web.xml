@@ -36,6 +36,14 @@
         <url-pattern>/activityAPC_out</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>Approval</servlet-name>
+        <servlet-class>com.market.controller.activityAPVController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Approval</servlet-name>
+        <url-pattern>/activityAPV_out</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>Brand</servlet-name>
         <servlet-class>com.market.controller.BrandController</servlet-class>
     </servlet>

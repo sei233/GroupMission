@@ -68,7 +68,7 @@
                     <th>商品品牌</th>
                     <th>商品型号</th>
                     <th>商品颜色</th>
-                    <th colspan="3">操作</th>
+                    <th colspan="4">操作</th>
                 </tr>
                 <c:forEach items="${good_list}" var="good" varStatus="s">
                     <tr class="active">
@@ -88,6 +88,9 @@
                         </td>
                         <td><a class="btn btn-danger"
                                href="${pageContext.request.contextPath }/good_out?type=delete&&id=${good.goodId}">删除</a>
+                        </td>
+                        <td><a class="btn btn-danger"
+                               href="${pageContext.request.contextPath }/activityAPC_out?type=loadGood&&id=${good.goodId}">促销选用</a>
                         </td>
                     </tr>
                 </c:forEach>
