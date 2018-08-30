@@ -11,7 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -21,6 +23,9 @@ public class GiftController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         String type = request.getParameter("type");
         GiftService gs = new GiftService();
+        LogService logs = new LogService();
+        HttpSession session = request.getSession();
+        String loginName = (String)session.getAttribute("loginName");
         if (type==null){
             type="";
         }
@@ -50,6 +55,8 @@ public class GiftController extends HttpServlet {
                 if (row==1){
                     request.setAttribute("msg","addsucc");
                     request.getRequestDispatcher("/WEB-INF/jsp/gift_out.jsp").forward(request,response);
+                    java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                    logs.addObj(loginName,"添加赠品"+giftName,timenow);
                 }else {
                     request.setAttribute("msg","addfail");
                     request.getRequestDispatcher("/WEB-INF/jsp/gift_out.jsp").forward(request,response);
@@ -65,6 +72,8 @@ public class GiftController extends HttpServlet {
                 if (row==1){
                     request.setAttribute("msg","deletesucc");
                     request.getRequestDispatcher("/WEB-INF/jsp/gift_out.jsp").forward(request,response);
+                    java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                    logs.addObj(loginName,"删除赠品"+id,timenow);
                 }else {
                     request.setAttribute("msg","deletefail");
                     request.getRequestDispatcher("/WEB-INF/jsp/gift_out.jsp").forward(request,response);
@@ -89,6 +98,8 @@ public class GiftController extends HttpServlet {
                 if (row==1){
                     request.setAttribute("msg","updatesucc");
                     request.getRequestDispatcher("/WEB-INF/jsp/gift_out.jsp").forward(request,response);
+                    java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                    logs.addObj(loginName,"修改赠品"+giftName,timenow);
                 }else {
                     request.setAttribute("msg","updatefail");
                     request.getRequestDispatcher("/WEB-INF/jsp/gift_out.jsp").forward(request,response);
@@ -111,6 +122,8 @@ public class GiftController extends HttpServlet {
                     if (gift_list.size()>0) {
                         request.setAttribute("gift_list", gift_list);
                         request.getRequestDispatcher("/WEB-INF/jsp/gift_out.jsp").forward(request, response);
+                        java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                        logs.addObj(loginName,"查询赠品"+id+"信息",timenow);
                     }else {
                         request.setAttribute("msg", "kk");
                         request.getRequestDispatcher("/WEB-INF/jsp/gift_out.jsp").forward(request, response);
@@ -126,6 +139,8 @@ public class GiftController extends HttpServlet {
                 Gift gift = gs.findObjById(Integer.parseInt(id));
                 request.setAttribute("gift",gift);
                 request.getRequestDispatcher("/WEB-INF/jsp/gift_detail.jsp").forward(request,response);
+                java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                logs.addObj(loginName,"查看赠品"+id+"详情",timenow);
                 break;
             }
             //默认操作，返回原页

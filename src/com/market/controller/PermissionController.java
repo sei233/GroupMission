@@ -3,6 +3,7 @@ package com.market.controller;
 import com.market.bean.po.Permission;
 import com.market.bean.po.Permission;
 import com.market.dao.Dao;
+import com.market.service.Impl.LogService;
 import com.market.service.Impl.PermissionService;
 import com.market.service.Impl.SqlSmt;
 
@@ -11,7 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 @WebServlet(name = "PermissionController",urlPatterns = "/PermissionController")
@@ -21,6 +24,9 @@ public class PermissionController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         String type = request.getParameter("type");
         PermissionService ps = new PermissionService();
+        LogService logs = new LogService();
+        HttpSession session = request.getSession();
+        String loginName = (String)session.getAttribute("loginName");
         if (type==null){
             type="";
         }
@@ -38,6 +44,8 @@ public class PermissionController extends HttpServlet {
                 if (row==1){
                     request.setAttribute("msg","addsucc");
                     request.getRequestDispatcher("/WEB-INF/jsp/permission_out.jsp").forward(request,response);
+                    java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                    logs.addObj(loginName,"添加权限"+permissionName,timenow);
                 }else {
                     request.setAttribute("msg","addfail");
                     request.getRequestDispatcher("/WEB-INF/jsp/permission_out.jsp").forward(request,response);
@@ -51,6 +59,8 @@ public class PermissionController extends HttpServlet {
                 if (row==1){
                     request.setAttribute("msg","deletesucc");
                     request.getRequestDispatcher("/WEB-INF/jsp/permission_out.jsp").forward(request,response);
+                    java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                    logs.addObj(loginName,"删除权限"+id,timenow);
                 }else {
                     request.setAttribute("msg","deletefail");
                     request.getRequestDispatcher("/WEB-INF/jsp/permission_out.jsp").forward(request,response);
@@ -75,6 +85,8 @@ public class PermissionController extends HttpServlet {
                 if (row==1){
                     request.setAttribute("msg","updatesucc");
                     request.getRequestDispatcher("/WEB-INF/jsp/permission_out.jsp").forward(request,response);
+                    java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                    logs.addObj(loginName,"修改权限"+name,timenow);
                 }else {
                     request.setAttribute("msg","updatefail");
                     request.getRequestDispatcher("/WEB-INF/jsp/permission_out.jsp").forward(request,response);
@@ -94,6 +106,8 @@ public class PermissionController extends HttpServlet {
                 }finally {
                     request.setAttribute("permission_list", permission_list);
                     request.getRequestDispatcher("/WEB-INF/jsp/permission_out.jsp").forward(request, response);
+                    java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                    logs.addObj(loginName,"查询权限"+id,timenow);
                 }
                 break;
             }

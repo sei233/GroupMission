@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>添加用户</title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <%--<script src="/js/jquery.min.js"></script>--%>
     <script type="text/javascript" src="js/page.js"></script>

@@ -122,11 +122,12 @@
                    target=mainFrame>－ 权限管理</a>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}#"
+                <a href="${pageContext.request.contextPath}/log"
                    target=mainFrame>－ 日志管理</a>
             </li>
         </ul>
     </div>
 </div>
+
 </body>
 </html>

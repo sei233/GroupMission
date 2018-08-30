@@ -5,6 +5,7 @@ package com.market.controller;
 import com.market.bean.po.Role;
 import com.market.dao.Dao;
 
+import com.market.service.Impl.LogService;
 import com.market.service.Impl.RoleService;
 import com.market.service.Impl.SqlSmt;
 import javax.servlet.ServletException;
@@ -12,7 +13,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 
@@ -23,6 +26,9 @@ public class RoleController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         String type = request.getParameter("type");
         RoleService rs = new RoleService();
+        LogService logs = new LogService();
+        HttpSession session = request.getSession();
+        String loginName = (String)session.getAttribute("loginName");
         if (type == null) {
             type = "";
         }
@@ -43,6 +49,8 @@ public class RoleController extends HttpServlet {
                 if (row == 1) {
                     request.setAttribute("msg", "addsucc");
                     request.getRequestDispatcher("/WEB-INF/jsp/role_out.jsp").forward(request, response);
+                    java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                    logs.addObj(loginName,"添加角色"+roleName,timenow);
                 } else {
                     request.setAttribute("msg", "addfail");
                     request.getRequestDispatcher("/WEB-INF/jsp/role_out.jsp").forward(request, response);
@@ -56,6 +64,8 @@ public class RoleController extends HttpServlet {
                 if (row == 1) {
                     request.setAttribute("msg", "deletesucc");
                     request.getRequestDispatcher("/WEB-INF/jsp/role_out.jsp").forward(request, response);
+                    java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                    logs.addObj(loginName,"删除角色"+id,timenow);
                 } else {
                     request.setAttribute("msg", "deletefail");
                     request.getRequestDispatcher("/WEB-INF/jsp/role_out.jsp").forward(request, response);
@@ -82,6 +92,8 @@ public class RoleController extends HttpServlet {
                 if (row == 1) {
                     request.setAttribute("msg", "updatesucc");
                     request.getRequestDispatcher("/WEB-INF/jsp/role_out.jsp").forward(request, response);
+                    java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                    logs.addObj(loginName,"修改角色"+name,timenow);
                 } else {
                     request.setAttribute("msg", "updatefail");
                     request.getRequestDispatcher("/WEB-INF/jsp/role_out.jsp").forward(request, response);
@@ -101,6 +113,8 @@ public class RoleController extends HttpServlet {
                 }finally {
                     request.setAttribute("role_list", role_list);
                     request.getRequestDispatcher("/WEB-INF/jsp/role_out.jsp").forward(request, response);
+                    java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                    logs.addObj(loginName,"查询角色"+id+"信息",timenow);
                 }
                 break;
             }

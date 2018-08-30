@@ -1,12 +1,14 @@
 package com.market.bean.po;
 
 public class Login {
+
     private String userAccount;
     private String userPassword;
 
     public Login() {
     }
     public Login(String userAccount,String userPassword){
+
         this.userAccount=userAccount;
         this.userPassword=userPassword;
     }
@@ -25,6 +27,8 @@ public class Login {
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
+
+
 }
 
 

@@ -31,6 +31,7 @@ public class SqlSmt {
     public static final String FINDID_USER="select userId,userAccount,userName,userDept,userSex,userStatus,userTitle,userPhone,userEmail,userRole,userRemark1,userRemark2,userRemark3,userRemark4,userRemark5 from user where userId=?";
     public static final String FINDALL_USER="select userId,userAccount,userName,userDept,userSex,userStatus,userTitle,userPhone,userEmail,userRole,userRemark1,userRemark2,userRemark3,userRemark4,userRemark5 from user where 1=1";
     public static final String UPDATE_PASSWORD="update user set userPassword=? where userAccount=?";
+    public static final String FIND_LOGIN="select userAccount,userPassword from user";
     //role增删改查语句
     public static final String INSERT_ROLE="insert into role(roleName,roleDesc,roleStatus,roleDept)values(?,?,?,?)";
     public static final String UPDATE_ROLE="update role set roleName=?,roleDesc=?,roleStatus=?,roleDept=? where roleId=?";
@@ -63,7 +64,11 @@ public class SqlSmt {
     public static final String FINDID_ACTIVITY = "select * from activity where activityId=?";
     public static final String FINDALL_ACTIVITY = "select * from activity where 1=1";
     public static final String UPDATE_APV = "update activity set approveState=?,approveComment=?,approveDate=? where activityId=?";
-
+    //log表操作
+    public static final String INSERT_LOG ="insert into log(logName,logOps,logTime)values(?,?,?)";
+    public static final String DELETE_LOG = "delete from log where logId=?";
+    public static final String FINDID_LOG = "select * from log where logId=?";
+    public static final String FINDALL_LOG = "select * from log where 1=1";
     //    //firstGood增删改查语句
 //    public static final String INSERT_FIRSTGOOD="insert into firstGood(goodName,adoptPrice,marketPrice,shopPrice,minNo,adopt,creatTime,updateTime,operator,typeId,productId) values(?,?,?,?,?,?,?,?,?,?,?) ";
 //    public static final String UPDATE_FIRSTGOOD="update firstGood set goodName=?,typeId=?,marketPrice=?,shopPrice=?,minNo=?,adopt=?,updateTime=? where goodId=?";

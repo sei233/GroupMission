@@ -3,6 +3,7 @@ package com.market.controller;
 import com.market.bean.po.User;
 
 import com.market.dao.Dao;
+import com.market.service.Impl.LogService;
 import com.market.service.Impl.SqlSmt;
 import com.market.service.Impl.UserService;
 
@@ -11,7 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 
@@ -21,6 +24,9 @@ import java.util.ArrayList;
             request.setCharacterEncoding("utf-8");
             String type = request.getParameter("type");
             UserService us = new UserService();
+            LogService logs = new LogService();
+            HttpSession session = request.getSession();
+            String loginName = (String)session.getAttribute("loginName");
             if (type == null) {
                 type = "";
             }
@@ -49,6 +55,8 @@ import java.util.ArrayList;
                     if (row==1){
                         request.setAttribute("msg","addsucc");
                         request.getRequestDispatcher("/WEB-INF/jsp/user_out.jsp").forward(request,response);
+                        java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                        logs.addObj(loginName,"添加用户"+userAccount,timenow);
                     }else {
                         request.setAttribute("msg","addfail");
                         request.getRequestDispatcher("/WEB-INF/jsp/user_out.jsp").forward(request,response);
@@ -62,6 +70,8 @@ import java.util.ArrayList;
                     if (row==1){
                         request.setAttribute("msg","deletesucc");
                         request.getRequestDispatcher("/WEB-INF/jsp/user_out.jsp").forward(request,response);
+                        java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                        logs.addObj(loginName,"删除用户"+id,timenow);
                     }else {
                         request.setAttribute("msg","deletefail");
                         request.getRequestDispatcher("/WEB-INF/jsp/user_out.jsp").forward(request,response);
@@ -97,6 +107,8 @@ import java.util.ArrayList;
                     if (row==1){
                         request.setAttribute("msg","updatesucc");
                         request.getRequestDispatcher("/WEB-INF/jsp/user_out.jsp").forward(request,response);
+                        java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                        logs.addObj(loginName,"修改用户"+account+"信息",timenow);
                     }else {
                         request.setAttribute("msg","updatefail");
                         request.getRequestDispatcher("/WEB-INF/jsp/user_out.jsp").forward(request,response);
@@ -116,6 +128,8 @@ import java.util.ArrayList;
                     }finally {
                         request.setAttribute("user_list", user_list);
                         request.getRequestDispatcher("/WEB-INF/jsp/user_out.jsp").forward(request, response);
+                        java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                        logs.addObj(loginName,"查询用户"+id+"信息",timenow);
                     }
                     break;
                 }
