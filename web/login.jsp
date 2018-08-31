@@ -53,6 +53,9 @@
         alert("修改成功");
         window.location.replace("${pageContext.request.contextPath }/login.jsp");
     }
+    if (msg=="noLogin"){
+        alert("您当前未登录，不能访问内部资源");
+    }
 
 
 </script>

@@ -81,6 +81,8 @@ public class LoginController extends HttpServlet {
                             if (l.getUserAccount().equals(account) && l.getUserPassword().equals(password)) {
                                 //把用户数据保存在session域对象中
                                 request.getSession().setAttribute("loginName", account);
+                                request.getSession().setAttribute("user", l);
+                                System.out.println(l.getUserAccount()+"..."+l.getUserPassword());
                                 java.sql.Timestamp timenow = new Timestamp(System.currentTimeMillis());
                                 logs.addObj(account, "登录", timenow);
                                 request.getRequestDispatcher("index.html").forward(request, response);

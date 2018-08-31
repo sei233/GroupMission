@@ -11,13 +11,15 @@ import java.util.Date;
 public class test {
     public static void main(String[] args) {
 
-        String s1 = "100";
-        String s2 = "90";//降价幅度
+        System.out.println(true && ( !false || !true));
 
-        Float s3 = 1-(Float.parseFloat(s2)/100);
-        System.out.println(Float.parseFloat(s2)/100);
-        Float s = Float.parseFloat(s1)*(1-(Float.parseFloat(s2)/100));
-        System.out.println(s);
+//        String s1 = "100";
+//        String s2 = "90";//降价幅度
+//
+//        Float s3 = 1-(Float.parseFloat(s2)/100);
+//        System.out.println(Float.parseFloat(s2)/100);
+//        Float s = Float.parseFloat(s1)*(1-(Float.parseFloat(s2)/100));
+//        System.out.println(s);
 //        System.out.println(23.6*0.115);
 
 
