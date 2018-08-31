@@ -2,7 +2,7 @@ package com.market.controller;
 
 import com.market.bean.po.ActivityAPC;
 import com.market.service.Impl.APCService;
-
+import com.google.gson.Gson;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,12 +16,28 @@ import java.util.Date;
 public class activityAPVController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
+        response.setContentType("type/text;charset=UTF-8");
         String type = request.getParameter("type");
         APCService as = new APCService();
         if (type==null){
             type="";
         }
         switch (type){
+            case "ajax":{
+                String state = request.getParameter("state");
+                ArrayList<ActivityAPC> activity_list = null;
+                if (state.equals("5")){
+                    activity_list=(ArrayList<ActivityAPC>)as.findObj();
+                }else {
+                    activity_list= as.findByState(Integer.parseInt(state));
+                }
+                Gson gson = new Gson();
+                String json = gson.toJson(activity_list);
+                System.out.println(json);
+                response.getWriter().write(json);
+
+                break;
+            }
             case "apv":{
                 String id = request.getParameter("id");
                 ActivityAPC activity = as.findObjById(Integer.parseInt(id));
