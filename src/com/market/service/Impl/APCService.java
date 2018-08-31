@@ -4,6 +4,7 @@ import com.market.bean.po.ActivityAPC;
 import com.market.dao.Dao;
 import com.market.service.BasicOperate;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -44,5 +45,11 @@ public class APCService implements BasicOperate {
 
         return d.AddDeleteChange(SqlSmt.UPDATE_APV,objects);
 
+    }
+
+    public ArrayList<ActivityAPC> findByState(int parseInt) {
+        StringBuilder sb = new StringBuilder(SqlSmt.FINDALL_ACTIVITY);
+        sb.append(" and approveState = ?");
+        return d.loadAllObjects(ActivityAPC.class,sb.toString(),parseInt);
     }
 }

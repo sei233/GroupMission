@@ -17,6 +17,45 @@
     <script type="text/javascript" src="/js/page.js"></script>
     <link rel="stylesheet" href="/css/page.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script type="text/javascript">
+        $( function () {
+            $("#state").change(function () {
+                var state = $("#state").val();
+               $.ajax({
+                   async:true,
+                   url:"${pageContext.request.contextPath}/activityAPV_out",
+                   type:"post",
+                   data:{"state":state,"type":"ajax"},
+                   dataType:"JSON",
+                   success:function (data) {
+                       $("#table tr:gt(0)").remove();
+                       var s = "";
+                       //[{"activityId":3,"activityName":"康师傅大甩卖","beginTime":"Aug 28, 2018 3:35:18 PM","endTime":"Jan 7, 1900 10:30:00 AM","goodId":5,
+                       // "goodName":"康师傅充电器","goodPrice":1234.0,"activityNumber":1000,"priceRange":90,"activityPrice":1110.6,
+                       // "reason":"卖不出去了，没人吃充电器","remarks":"真的不好卖，大家 都不吃","approveState":0}]
+                       for (var i=0;i<data.length;i++){
+                           s += "<tr><td>"+data[i].activityId+"</td><td>"+data[i].activityName+"</td><td>"+data[i].beginTime+"</td><td>"+data[i].activityPrice+"</td><td>"+data[i].priceRange+"</td><td>"+data[i].approveState+"</td><td><a class=\"btn btn-primary\" href=\"${pageContext.request.contextPath }/activityAPV_out?type=show&&id="+data[i].activityId+"\">查看</a></td><td><a class=\"btn btn-primary\" href=\"${pageContext.request.contextPath }/activityAPV_out?type=apv&&id="+data[i].activityId+"\">审核</a></td></tr>"
+                       }
+                       // alert(s);
+                       $("#table").append(s);
+                   }
+               }) ;
+            });
+        });
+        /*function newlist() {
+            var state = $("#state").val();
+            alert(state);
+            $.ajax({
+                url: "",
+                type: "POST",
+                data: {},
+                success:function () {
+
+                },
+
+            });
+        }*/
+    </script>
 </head>
 <body>
 <br>
@@ -31,13 +70,13 @@
             <br>
             <div class="form-group">
                 <label>审批状态 :</label>
-                <select class="btn btn-default" name="approveState">
-                    <option value="0">全部</option>
+                <select class="btn btn-default" id="state" name="approveState">
+                    <option value="5">全部</option>
                     <option value="1">1级审核通过</option>
                     <option value="2">2级审核通过</option>
                     <option value="3">审核通过</option>
                     <option value="4">审核不通过</option>
-                    <option value="5">未审核</option>
+                    <option value="0">未审核</option>
                 </select>
             </div>
         </div>
