@@ -9,9 +9,12 @@
 <html>
 <head>
     <title>Title</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <link href="css/axurerpprototype.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-欢迎您，${loginName}
-<a href="${pageContext.request.contextPath}/LoginController?type=logout">退出登录</a>
+<h3>欢迎您，${loginName}</h3>
+<a href="${pageContext.request.contextPath}/LoginController?type=logout" target="_top">退出系统</a>
 </body>
 </html>

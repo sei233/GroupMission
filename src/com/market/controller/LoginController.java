@@ -63,8 +63,10 @@ public class LoginController extends HttpServlet {
 
                 }
                 case "logout": {
+                    String account=(String)request.getSession().getAttribute("loginName");
+                    java.sql.Timestamp timenow = new Timestamp(System.currentTimeMillis());
+                    logs.addObj(account, "注销", timenow);
                     HttpSession session  = request.getSession(false);
-                    System.out.println(request.getContextPath());
                     if(session==null){
                         response.sendRedirect("login.jsp");
                         return;
