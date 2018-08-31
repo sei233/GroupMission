@@ -53,8 +53,6 @@
         alert("修改成功");
         window.location.replace("${pageContext.request.contextPath }/login.jsp");
     }
-    if (window != top){
-        window.parent.parent.window.location.href = 'login.jsp';
-    }
+
 </script>
 </html>
