@@ -4,6 +4,7 @@ import com.market.bean.po.Application;
 import com.market.bean.po.Product;
 import com.market.bean.vo.ApplicationVo;
 import com.market.service.Impl.ApplicationService;
+import com.market.service.Impl.LogService;
 import com.market.service.Impl.ProductService;
 
 import javax.servlet.RequestDispatcher;
@@ -11,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;

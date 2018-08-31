@@ -1,6 +1,7 @@
 package com.market.controller;
 
 import com.market.bean.po.Product;
+import com.market.service.Impl.LogService;
 import com.market.service.Impl.ProductService;
 
 import javax.servlet.ServletException;
@@ -8,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 @WebServlet(name = "ProductController")
@@ -18,6 +21,9 @@ public class ProductController extends HttpServlet {
         String type = request.getParameter("type");
         ArrayList<Product> product_list = null;
         ProductService ps = new ProductService();
+        LogService logs = new LogService();
+        HttpSession session = request.getSession();
+        String loginName = (String)session.getAttribute("loginName");
         ArrayList<String> color_list = ps.getColor_list();
 //        for (String s:color_list) System.out.println(s);
         ArrayList<String> brand_list = ps.getBrand_list();
@@ -50,6 +56,8 @@ public class ProductController extends HttpServlet {
                         if (product_list.size()>0) {
                             request.setAttribute("product_list", product_list);
                             request.getRequestDispatcher("/WEB-INF/jsp/product_out.jsp").forward(request, response);
+                            java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                            logs.addObj(loginName,"查询产品"+id,timenow);
                         }else {
                             request.setAttribute("msg", "kk");
                             request.getRequestDispatcher("/WEB-INF/jsp/product_out.jsp").forward(request, response);
@@ -65,6 +73,8 @@ public class ProductController extends HttpServlet {
                     if (product_list.size()>0) {
                         request.setAttribute("product_list", product_list);
                         request.getRequestDispatcher("/WEB-INF/jsp/product_out.jsp").forward(request, response);
+                        java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                        logs.addObj(loginName,"查询产品"+id,timenow);
                     }else {
                         request.setAttribute("msg", "kk");
                         request.getRequestDispatcher("/WEB-INF/jsp/product_out.jsp").forward(request, response);

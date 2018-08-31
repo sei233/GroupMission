@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>添加角色</title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <%--<script src="/js/jquery.min.js"></script>--%>
     <script type="text/javascript" src="js/page.js"></script>
@@ -38,8 +38,8 @@
             <div class="form-group">
                 <span >角色状态&nbsp;</span> <select class="btn btn-default" name="roleStatus">
                 <option value="">请选择</option>
-                <option value="0">有效</option>
-                <option value="1">无效</option>
+                <option value="有效">有效</option>
+                <option value="无效">无效</option>
             </select>
             </div>
             <br>

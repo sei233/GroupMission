@@ -1,6 +1,7 @@
 package com.market.service.Impl;
 
 import com.market.bean.po.Login;
+import com.market.bean.po.User;
 import com.market.dao.Dao;
 import com.market.service.BasicOperate;
 
@@ -24,19 +25,20 @@ public class LoginService implements BasicOperate{
     }
 
     @Override
+    public Login findObjById(Integer id) {
+        return null;
+    }
+
+    @Override
     public int changeObj(Object... objects) {
         return d.AddDeleteChange(SqlSmt.UPDATE_PASSWORD,objects);
     }
 
     @Override
-    public Object findObjById(Integer id) {
-        return null;
+    public List<Login> findObj(Object... objects) {
+        return d.loadAllObjects(Login.class, SqlSmt.FIND_LOGIN, objects);
     }
 
-    @Override
-    public List findObj(Object... objects) {
-        return null;
-    }
 
 
 }

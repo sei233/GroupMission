@@ -9,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 @WebServlet(name = "activityAPCController")
 public class activityAPCController extends HttpServlet {
@@ -17,6 +19,9 @@ public class activityAPCController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         String type = request.getParameter("type");
         APCService as = new APCService();
+        LogService logs = new LogService();
+        HttpSession session = request.getSession();
+        String loginName = (String)session.getAttribute("loginName");
         if (type==null){
             type="";
         }
@@ -54,6 +59,8 @@ public class activityAPCController extends HttpServlet {
                 if (row==1){
                     request.setAttribute("msg","addsucc");
                     request.getRequestDispatcher("/WEB-INF/jsp/activityAPC_out.jsp").forward(request,response);
+                    java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                    logs.addObj(loginName,"添加活动"+activityName+"申请",timenow);
                 }else {
                     request.setAttribute("msg","addfail");
                     request.getRequestDispatcher("/WEB-INF/jsp/activityAPC_out.jsp").forward(request,response);
@@ -66,6 +73,8 @@ public class activityAPCController extends HttpServlet {
                 if (row==1){
                     request.setAttribute("msg","deletesucc");
                     request.getRequestDispatcher("/WEB-INF/jsp/activityAPC_out.jsp").forward(request,response);
+                    java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                    logs.addObj(loginName,"删除活动"+id+"申请",timenow);
                 }else {
                     request.setAttribute("msg","deletefail");
                     request.getRequestDispatcher("/WEB-INF/jsp/activityAPC_out.jsp").forward(request,response);
@@ -96,6 +105,8 @@ public class activityAPCController extends HttpServlet {
                 if (row==1){
                     request.setAttribute("msg","updatesucc");
                     request.getRequestDispatcher("/WEB-INF/jsp/activityAPC_out.jsp").forward(request,response);
+                    java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                    logs.addObj(loginName,"修改活动"+activityName+"申请",timenow);
                 }else {
                     request.setAttribute("msg","updatefail");
                     request.getRequestDispatcher("/WEB-INF/jsp/activityAPC_out.jsp").forward(request,response);
@@ -116,6 +127,8 @@ public class activityAPCController extends HttpServlet {
                     if (activity_list.size()>0) {
                         request.setAttribute("activity_list", activity_list);
                         request.getRequestDispatcher("/WEB-INF/jsp/activityAPC_out.jsp").forward(request, response);
+                        java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                        logs.addObj(loginName,"查询活动"+id+"申请",timenow);
                     }else {
                         request.setAttribute("msg", "kk");
                         request.getRequestDispatcher("/WEB-INF/jsp/activityAPC_out.jsp").forward(request, response);
@@ -130,6 +143,8 @@ public class activityAPCController extends HttpServlet {
                 ActivityAPC activity = as.findObjById(Integer.parseInt(id));
                 request.setAttribute("activity",activity);
                 request.getRequestDispatcher("/WEB-INF/jsp/activityAPC_detail.jsp").forward(request,response);
+                java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                logs.addObj(loginName,"查看活动"+id+"申请详情",timenow);
                 break;
             }
             //默认操作，返回原页

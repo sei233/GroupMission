@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>添加用户</title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <%--<script src="/js/jquery.min.js"></script>--%>
     <script type="text/javascript" src="js/page.js"></script>
@@ -34,33 +34,35 @@
             </div>
             <br>
             <br>
-            < class="form-group">
-                <span>用户性别&nbsp;</span><select class="btn btn-default" name="userSex">
-                <option value="">请选择</option>
-                <option value="0">男</option>
-                <option value="1">女</option>
-            </select>
-            <br>
-            <br>
             <div class="form-group">
                 <span>用户部门&nbsp;</span><input type="text" name="userDept" class="form-control" >
             </div>
             <br>
             <br>
-            < class="form-group">
-                <span>用户状态&nbsp;</span><select class="btn btn-default" name="userStatus">
+            <div class="form-group">
+                <span>用户性别&nbsp;</span><select class="btn btn-default" name="userSex">
                 <option value="">请选择</option>
-                <option value="0">有效</option>
-                <option value="1">无效</option>
+                <option value="男">男</option>
+                <option value="女">女</option>
             </select>
+            </div>
             <br>
             <br>
             <div class="form-group">
-                <span>用户职位&nbsp;</span><select class="btn btn-default" name="userStatus">
+                <span>用户状态&nbsp;</span><select class="btn btn-default" name="userStatus">
                 <option value="">请选择</option>
-                <option value="0">员工</option>
-                <option value="1">经理</option>
-                <option value="2">处长</option>
+                <option value="有效">有效</option>
+                <option value="无效">无效</option>
+            </select>
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <span>用户职位&nbsp;</span><select class="btn btn-default" name="userTitle">
+                <option value="">请选择</option>
+                <option value="员工">员工</option>
+                <option value="经理">经理</option>
+                <option value="处长">处长</option>
             </select>
             </div>
             <br>

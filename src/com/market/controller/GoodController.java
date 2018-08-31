@@ -4,17 +4,16 @@ import com.market.bean.po.Brand;
 import com.market.bean.po.Good;
 import com.market.bean.po.Product;
 import com.market.dao.Dao;
-import com.market.service.Impl.BrandService;
-import com.market.service.Impl.GoodService;
-import com.market.service.Impl.SqlSmt;
-import com.market.service.Impl.TypeService;
+import com.market.service.Impl.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -24,6 +23,9 @@ public class GoodController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         String type = request.getParameter("type");
         GoodService gs = new GoodService();
+        LogService logs = new LogService();
+        HttpSession session = request.getSession();
+        String loginName = (String)session.getAttribute("loginName");
         if (type==null){
             type="";
         }
@@ -62,6 +64,8 @@ public class GoodController extends HttpServlet {
                 if (row==1){
                     request.setAttribute("msg","addsucc");
                     request.getRequestDispatcher("/WEB-INF/jsp/good_out.jsp").forward(request,response);
+                    java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                    logs.addObj(loginName,"添加一类商品"+goodName,timenow);
                 }else {
                     request.setAttribute("msg","addfail");
                     request.getRequestDispatcher("/WEB-INF/jsp/good_out.jsp").forward(request,response);
@@ -95,6 +99,8 @@ public class GoodController extends HttpServlet {
                 if (row==1){
                     request.setAttribute("msg","addsucc");
                     request.getRequestDispatcher("/WEB-INF/jsp/good_out.jsp").forward(request,response);
+                    java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                    logs.addObj(loginName,"添加二类商品"+goodName,timenow);
                 }else {
                     request.setAttribute("msg","addfail");
                     request.getRequestDispatcher("/WEB-INF/jsp/good_out.jsp").forward(request,response);
@@ -111,6 +117,8 @@ public class GoodController extends HttpServlet {
                 if (row==1){
                     request.setAttribute("msg","deletesucc");
                     request.getRequestDispatcher("/WEB-INF/jsp/good_out.jsp").forward(request,response);
+                    java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                    logs.addObj(loginName,"删除商品"+id,timenow);
                 }else {
                     request.setAttribute("msg","deletefail");
                     request.getRequestDispatcher("/WEB-INF/jsp/good_out.jsp").forward(request,response);
@@ -140,6 +148,8 @@ public class GoodController extends HttpServlet {
                 if (row==1){
                     request.setAttribute("msg","updatesucc");
                     request.getRequestDispatcher("/WEB-INF/jsp/good_out.jsp").forward(request,response);
+                    java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                    logs.addObj(loginName,"修改商品"+goodName,timenow);
                 }else {
                     request.setAttribute("msg","updatefail");
                     request.getRequestDispatcher("/WEB-INF/jsp/good_out.jsp").forward(request,response);
@@ -162,6 +172,8 @@ public class GoodController extends HttpServlet {
                     if (good_list.size()>0) {
                         request.setAttribute("good_list", good_list);
                         request.getRequestDispatcher("/WEB-INF/jsp/good_out.jsp").forward(request, response);
+                        java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                        logs.addObj(loginName,"查询商品"+id,timenow);
                     }else {
                         request.setAttribute("msg", "kk");
                         request.getRequestDispatcher("/WEB-INF/jsp/good_out.jsp").forward(request, response);
@@ -178,6 +190,8 @@ public class GoodController extends HttpServlet {
                 Good good = gs.findObjById(Integer.parseInt(id));
                 request.setAttribute("good",good);
                 request.getRequestDispatcher("/WEB-INF/jsp/good_detail.jsp").forward(request,response);
+                java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                logs.addObj(loginName,"查看商品"+id+"详情",timenow);
                 break;
             }
             //默认操作，返回原页

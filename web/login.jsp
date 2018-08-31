@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>登录</title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <%--<script src="/js/jquery.min.js"></script>--%>
     <script type="text/javascript" src="js/page.js"></script>
@@ -18,12 +18,8 @@
 </head>
 <body>
 <div class="container">
-    <a class="btn btn-primary btn-block dropdown-toggle" href="${pageContext.request.contextPath}#"
-       target=topFrame>－ 登录</a>
-    <form action="/BrandController?type=addToBrand" method="post" class="form-inline">
+    <form action="LoginController?type=login" method="post" class="form-inline">
         <div>
-            <%--<a class="btn btn-primary box_relative" href="${pageContext.request.contextPath }/brand_detail?type=export">导入</a>--%>
-            <%--<c:out value="${brand}"></c:out>--%>
             <br>
             <br>
             <div class="form-group">
@@ -32,14 +28,15 @@
             <br>
             <br>
             <div class="form-group">
-                <span >用户密码&nbsp;</span><input type="text" name="userPassword" class="form-control" >
+                <span >用户密码&nbsp;</span><input type="password" name="userPassword" class="form-control" >
             </div>
-                <br>
-                <br>
-            <input class="btn btn-warning" type="login" value="登录">
-            <input class="btn btn-warning" type="updatePassword" value="修改密码">
-            <%--<a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/brand_out?type=addToBrand">添加</a>--%>
-            <a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/login">返回</a>
+            <br>
+            <br>
+            <input class="btn btn-warning" type="submit" value="登录">
+            <%--<form action="LoginController?type=login" method="post" class="form-inline">--%>
+            <a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/LoginController?type=update">修改密码</a>
+
+            <%--<a class="btn btn-warning box_relative" href="${pageContext.request.contextPath }/login">返回</a>--%>
         </div>
 
 
@@ -48,22 +45,15 @@
 </body>
 <script type="text/javascript">
     var msg = "${msg}";
-    if(msg=='loginsucc'){
-        alert("登录成功");
-        window.location.replace("${pageContext.request.contextPath }/login");
-    }
     if (msg=='loginfail'){
-        alert("登录失败");
-        window.location.replace("${pageContext.request.contextPath }/login");
+        alert("登录失败,用户账号或密码错误");
+        window.location.replace("${pageContext.request.contextPath }/login.jsp");
     }
     if(msg=='updatesucc'){
         alert("修改成功");
-        window.location.replace("${pageContext.request.contextPath }/login");
+        window.location.replace("${pageContext.request.contextPath }/login.jsp");
     }
-    if (msg=='updatefail'){
-        alert("修改失败");
-        window.location.replace("${pageContext.request.contextPath }/login");
-    }
+
 
 </script>
 </html>

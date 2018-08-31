@@ -3,12 +3,16 @@ package com.market.controller;
 import com.market.bean.po.ActivityAPC;
 import com.market.service.Impl.APCService;
 import com.google.gson.Gson;
+import com.market.service.Impl.LogService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -19,6 +23,9 @@ public class activityAPVController extends HttpServlet {
         response.setContentType("type/text;charset=UTF-8");
         String type = request.getParameter("type");
         APCService as = new APCService();
+        LogService logs = new LogService();
+        HttpSession session = request.getSession();
+        String loginName = (String)session.getAttribute("loginName");
         if (type==null){
             type="";
         }
@@ -57,6 +64,8 @@ public class activityAPVController extends HttpServlet {
                     if (row == 1) {
                         request.setAttribute("msg", "apvyes");
                         request.getRequestDispatcher("/WEB-INF/jsp/activityAPV_out.jsp").forward(request, response);
+                        java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                        logs.addObj(loginName,"审核"+activityId+"通过",timenow);
                     }else {
                         request.setAttribute("msg", "apvno");
                         request.getRequestDispatcher("/WEB-INF/jsp/activityAPV_out.jsp").forward(request, response);
@@ -76,6 +85,8 @@ public class activityAPVController extends HttpServlet {
                 if (row == 1) {
                     request.setAttribute("msg", "apvyes");
                     request.getRequestDispatcher("/WEB-INF/jsp/activityAPV_out.jsp").forward(request, response);
+                    java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                    logs.addObj(loginName,"审核"+activityId+"未通过",timenow);
                 }else {
                     request.setAttribute("msg", "apvno");
                     request.getRequestDispatcher("/WEB-INF/jsp/activityAPV_out.jsp").forward(request, response);
@@ -96,6 +107,8 @@ public class activityAPVController extends HttpServlet {
                     if (activity_list.size()>0) {
                         request.setAttribute("activity_list", activity_list);
                         request.getRequestDispatcher("/WEB-INF/jsp/activityAPV_out.jsp").forward(request, response);
+                        java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                        logs.addObj(loginName,"查询审核"+id,timenow);
                     }else {
                         request.setAttribute("msg", "kk");
                         request.getRequestDispatcher("/WEB-INF/jsp/activityAPV_out.jsp").forward(request, response);
@@ -108,6 +121,8 @@ public class activityAPVController extends HttpServlet {
                 ActivityAPC activity = as.findObjById(Integer.parseInt(id));
                 request.setAttribute("activity",activity);
                 request.getRequestDispatcher("/WEB-INF/jsp/activityAPV_detail.jsp").forward(request,response);
+                java.sql.Timestamp timenow=new Timestamp(System.currentTimeMillis());
+                logs.addObj(loginName,"查看审核"+id+"详情",timenow);
                 break;
             }
             //默认操作，返回原页
